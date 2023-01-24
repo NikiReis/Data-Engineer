@@ -1,0 +1,387 @@
+## Introdução ao Linux e Configuração Inicial 
+
+História: 
+
+Criado por Linus Torvalds em 1991. Linux é o 'Kernel' do Sistema Operacional.
+É desenvolvido por diversas pessoas e empresas ao redor do mundo. Linux é Multitarefa 
+	e multiusuário.
+
+O Linux pode ser distribuído por empresas, organizações ou mesmo pessoas, que podem podem 
+	colocar características próprias na S.O, como configurações, aplicações, sistema de intsatação
+	entre outras peculiaridades, assim damos o nome de distribuição, sua escolha é pessoal e depende da aplicação.
+
+Distribuições mais conhecidas: Ubuntu, Debian, Suse, Fedora, RedHat, Kali.
+
+No linux o disco local/pasta raiz é representado pelo simbolo '/'
+
+
+## Conhecendo o Terminal Linux e Seus Atalhos
+
+Terminal: O terminal, Shell ou Konsole é um alinha de comando onde podemos executar programas específicos
+do Linux.
+A maioria dos comandos são iguais em diversas distribuições.
+Uso para automação de processos através dos comandos, facilita o trabalho no Sistema para Profissionais da Área.
+O terminal pode ser aberto de diversas formas, mas a sequência de teclas CTRL + ALT + T facilita o acesso.
+
+	Comandos:
+		'pwd': É retornado o diretório em que o usuário está. Traz a saída local do terminal em que o usuário está logado;
+		'dir': Lista todos diretórios que há dentro do nível de diretório em que o usuário está navegando;
+		'ls': Lista todos os arquivos e diretórios que há dentro do nível de diretório em que o usuário está navegando;
+		'cd + " nome de um diretório": Muda o nível / Entra o diretório em que o usuário quer 'trabalhar' no terminal;
+		'mkdir' : Cria uma pasta / diretório, deve ser seguido do nome da pastas / diretório a ser criado;
+		'cd + espaço + nome diretorio + tab ': Auto completa o destino que estamos procurando, evitando assim que digitemos grande linhas de comandos ou grande nomes de pastas,e então economizando tempo;
+		'cd .. ': Retorna um passo ou seja volta para a pasta anterior, retorna um nível na navegação;
+		'cd + espaço + / ': Saí do diretório em que o usuário está trbalhando e vai direto para a raiz do dispositivo de armazenamento;
+		'ls -l': Lista arquivos e diretórios com uma maior riqueza de detalhes;
+		'man + um comando': Retorna o manual do comando digitado, como ele funciona e alguns casos de uso desse comando;
+		'comando + (--help)': Retorna a mesma coisa que o comando 'man', mas em português;
+		'cd + "~" ': Retorna o usuário para o diretório pessoal;
+		'history': Lista o histórico de todos os comando previamente utilizados no terminal;
+		' !! ': Executa o último comando utilizado no terminal;    
+		'mv': Move arquivos para um diretório específico de nossa preferência;
+		'touch': Cria um arquivos vazios, sem nenhum conteúdo;
+            	'rmdir' : Remove / deleta o diretório que especificarmos;
+		'rm' : Remove / deleta o(s) arquivo(s) que especificarmos;
+		'cat + nome de arquivo': Visualiza o que há dentro de um arquivo sem precisar abrir-lo;
+           	'tac + nome do arquivo': Inverte as linhas do que estiver escrito dentro de um arquivo;
+		'head + nome do arquivo': Mostra as dez primeiras linhas de um arquivo;    
+		'tail + nome do arquivo': Mostas as dez últimas linhas de um arquivo.
+		'tail + nome do arquivo + " > " + nome do arquivo ': Passa as dez últimas linhas de um arquivo para um outro arquivo caso o arquivo que o usuário deseja que receba a cópia não exista esse arquivo inexistente será criado instantâneamente;
+		'head + nome do arquivo + " > " + nome do arquivo ': Passa as dez primeiras linhas de um arquivo para um outro arquivo caso o arquivo que o usuário deseja que receba a cópia não exista esse arquivo inexistente será criado instantâneamente;                                                                          
+		'cal': Mostra o calendário do mês atual do usuário.
+		'date': Mostra a data atual do usuário, com detalhe de dia, mês, ano e horas/minutos/segundos em que foi feita a solicitação através do comando pelo terminal.
+		'tail/head + nome do arquivo + " >> " + nome do arquivo ': Adiciona as dez últimas linhas/dez primeiras linhas de um arquivo para um outro arquivo caso o arquivo que o usuário deseja que receba a cópia não exista esse arquivo inexistente será criado instantâneamente;
+		'grep + texto': Prcoura e marca - se houver ' o texto digitado pelo usuário dentro de um arquivo de preferência do usuário
+		' | + more ': Organiza arquivos muito grandes para um melhor visualização.
+		' | + less ': Organiza arquivos muito grandes para um melhor visualização.
+		' | ': Envia a sáida de um comando para a entrada de outro comando, permitindo a execução de dois comandos;
+		' > ': Redireciona a saída de um comando para outro comando ou arquivo;
+		' >> ': Redireciona a saída e adiciona a mesma para um comando ou arquivo;
+		' & ': Este operador permite usar dois comando e separar suas saídas no terminal;
+		' && ': Usado para que dois comando só sejam executados se o primeiro for executado com sucesso.
+		'lshw': Lista todos os dispositivos de hardware que o Linux achar.
+		'chmod': define quem tem permissão de fazer outras coisas dentro do arquivo (ler, editar, etc). 
+		'chown': define quem é o propietário de um arquivo;
+		'usermod -aG + username': Adiciona o usuário ao grupo de sudo, assim o usuário adicionado passa a ter privilégios de root.
+		'find -name + nome do arquivo': Busca se existe um arquivo usando o parâmetro do nome passado e retorna se o arquivo existe ou não, e caso exista, retorna o diretório onde o arquivo está.
+		'gzip': Cria um arquivo compactado do tipo gz.
+		'gunzip': Descompacta um arquivo do tipo gz.
+		'zip': Cria um arquivo compactado do tipo zip.
+		'unzip': Descompacta um arquivo do tipo zip.
+		'rar': Cria um arquivo compactado do tipo rar.
+		'rar -x': Descompacta um arquivo do tipo rar.
+		'bzip2': Cria um arquivo comnpactado do tipo bz2.
+		'bzip2 -d': Descompacta um arquivo do tipo bz2.
+		'tar': Arquiva um ou mais arquivos.
+		'tar -xvf': Descompacta um arquivo compactado e arquivado.
+		'Last': Exibe uma listagem de entrada e saída do usuário no sistema.
+		'Logname': Exibe o nome do usuário logado na seção atual.
+		'id': Exibe todos os identificadores do usuário logado na seção atual. Irá mostrar o usuário e os grupos no qual esse usuário pertence.
+		'passwd': quando utilizamos o comando 'cat' dentro do diretório '/etc/passwd' é exibido todos os usuários.	
+		'userdel -r + nome do usuário' será solicitada a senha do usuário que a pessoa está tentando deletar, caso a senha tenha sido digitada corretamente o usuário será deletado.
+		'passwd + nome do usuário': Altera a senha de login do usuário em questão.
+		'addgroup + nome do grupo': Cria um novo grupo
+		'adduser + nome do usuario + nome do grupo ': Cria um novo usuário e o adiciona ao grupo listado
+		'adduser + nome do usuário': Cria um novo usuário.
+		'adduser gpasswd -a +nome do usuário + nome do grupo': Adiciona um usuário já existente a o grupo desejado.
+		'gpasswd -d + nome do usuario + nome do grupo': Deleta o usuário desejado do grupo desejado.
+		'cat /etc/group': Lista todos os grupos do sistema.
+		'passwd root': Define a senha de acesso para o usuário root.
+		'su + nome do usuário': Altera o usuário da sessão atual.
+		'history': Mostra o histórico de tudo que fizemos no terminal
+		'history -c': Apaga o histórico
+		'alias': Dá um 'nickname' para um determinado comando. Exemplo: alias trc='traceroute'.
+		'nl + nome do arquivo': Exibe o arquivo e quantidade de linhas deste arquivo.
+		'wc -l + nome do arquivo': Exibe quantidade de linhas do arquivo, porém as linhas em branco também são contabilizadas.
+		'wc -w + nome do arquivo': Exibe a quantidade de palavras contidas dentro do arquivo.
+		'wc -c + nome do arquivo': Exibe o tamanho do arquivo em bytes.		
+		'ls -F': Mostra os arquivos e diretórios com um '/' na frente de diretórios.
+		'cmp + nome do arquivo + nome do arquivo': Faz uma comparação entre dois ou mais arquivos.
+		'diff + nome do arquivo + nome do arquivo': Retorna qual a diferença entre dois ou mais arquivos .
+		'sort -n + nome do arquivo': Organiza a saída do arquivo em ordem numérica.
+		'last reboot': Retorna todas as informações de reinicialização do sistema.
+		'route -n': Mostra todas as tabelas de roteamento ip do kernel.
+		'time': Mostra o tempo de um processo.
+		'uptime': Mostra o tempo de execuçãoi do sistema. 
+		'init 0': Desliga a máquina.
+		'telinit 0': Desliga a máquina.
+		'halt': Desliga a máquina mas antes de desligar a máquina é pedido a senha do usuário para confirmar o comando.
+		'seq + intervalo numerico': Imprime na tela a sequencia numérica que desejarmos.
+		'whereis': Exibe o caminho do programa e seu manual.
+		'which': Exibe o caminho de um programa.
+		'logout': Finaliza a sessão.	
+		‘apt’: Gerenciador de pacotes.
+		‘apt install’: Instala Pacotes.
+		‘apt upgrade’: Atualiza Pacotes.
+		‘apt update && apt upgrade’: Atualiza o sistemas	
+		‘dpkg’: Gerenciador de Pacotes deb.
+		‘dpkg -i’: Instala um pacote deb.		
+		‘dpkg -r’: Remove um pacote rpm.
+		‘dpkg -l’: Informacoes do pacotes deb.
+		‘rpm’: Gerenciador de pacotes rpm.
+		‘rpm -ivh’: Instala um pacote rpm.
+		‘rpm -U’: Atualiza um apcote rpm.
+		‘rpm -e’: Remove um pacote rpm.
+		‘yum’: Gerenciador de pacotes rpm.
+		‘yum install’: instala um pacote rpm.
+		‘yum update’: Atualiza um pacote rpm.
+		‘yum remove’: Remove um pacote rpm.
+
+	Atalhos: 
+		'Ctrl + c': Cancela o comando atual em funcionamento.
+		'Ctrl + z': Pausa o comando atual, em primeiro plano ou segundo plano.
+		'Ctrl + d': Faz logout da sessão atual.
+		'Ctrl + w': Apaga uma palavra na linha atual.
+		'Ctrl + u': Apaga a linha inteira.
+		'Ctrl + r': Busca um comando recente.
+		'Ctrl + l / reset': Limpa o terminal linux.
+		'exit': Saí do terminal.
+
+## Diretórios do Linux e Comandos do Sistema 
+
+
+ '/bin/':  Binários principais dos usuários;
+ 'boot/': Arquivos do sistema de Boot;
+ '/dev/': Arquivos de dispositivos;
+ '/etc/': Arquivos de configuração do sistema;
+ '/home/': Diretório dos usuários comuns do sistema;
+ '/lib/': Bibliotecas essenciais do sistema e os módulos do kernel;
+ '/media/: Diretório de montagem e dispositivos;
+ '/mnt/': Diretório de montagem de dispositivos - mesmo que -"media";
+ '/opt/': Instalação de programas não oficiais da distribuição ou por conta do usuário;
+ '/sbin/': Armazena arquivos executáveis que representam comandos administrativos. Exemplo: shutdown;
+ '/srv/': Diretório para dados de serviços fornecidos pelo sistema;
+ '/tmp/': Diretório para arquivos temporários;
+ '/usr/': Segunda hierarquia do sistema, onde ficam os usuários comuns do sistema e programas;
+ '/var/': Diretório com arquivos variáveis gerados pelos programas do sistema. Exemplo: Logs, Históricos, e-mail e cache;
+ '/root/': Diretório de usuário root - Usuário root tem o poder total sobre o sistema.
+ '/proc/': Diretório virtual pelo Kernel.
+
+## Fundamentos de Rede e Comandos de Rede 
+
+  O que é Rede ?
+	'Rede de computadores é um conjunto de equipamentos interligados de maneira a trocarem informações
+	e compartilharem recursos, modems, softwares e outros equipamentos '. (Sousa,1999)	
+  
+  'Nós': São pontos de rede de conexão a internet.
+
+  Rede Wan: Wide Area Network ou World Area Network é uma rede geograficamente distribuída.
+
+  Rede Man: Metropolitan Area Network é uma rede metropolitana que interligam várias redes locais.
+
+  Rede Local: Interligam Redes Locais. Local Area Network é uma rede local de uma forma geral em um único prédio
+
+  Protocols: Protocolo é a " Linguagem " usada pelos dispositivos de uma rede de modo que eles consigam se "entender".(torres,2004).
+	existem diversos protocolos para cada tipo de ação/solicitação.
+
+	IP: Protocolo de internet - Endereço IP - números que identificam seu computador em uma rede.
+
+	ICMP: (Internet Control Message Protocol) tem por objetivo prover mensagens de controle na comunicação entre nós.
+	
+	DNS - Domain Name Server - Esse protocolo de aplicação tem por função identificar endereços IPs e manter uma tabela com os endereços
+		dos caminhos de algumas redes.
+
+  Interface de Rede:
+	Software e/ou hardware que faz a comunicação em uma rede de computadores.
+	
+	As interfaces de rede no Linux estão estão localizadas no diretório '/dev' e a maioria é criada dinamicamente pelos softwares
+	quando são requisitados.
+	Exemplo: eth0 - Placa de rede Ethernet - cabeada.
+	
+	Interface de Rede Loopback: É um tipo especial de interface que permite fazer conexões com você mesmo, com ela, você pode testar vários programas
+		de rede sem interfierir em sua rede. Padrão, o endereço IP 127.0.0.1 foi escolhido para loopback.
+	
+	IPv4: Endereço de IP local da máquina em questão.
+	IPv6: Endereço de IP também local.
+	ether: endereço único da placar de rede / modem / roteador.
+
+  Comandos: 
+
+	ifconfig: Retorna o IP da máquina. ( Faz parte do pacote net-tools, que deve ser instalado antes de ser chamado no terminal ).
+	hostname: Traz informações sobre o host - nome computador na rede -.
+	hostname -I: Traz o endereço (IP) do host - computador na rede -.
+	hostname -i: Traz o endereço de loopback do host - computador na rede -.
+	who: Traz como o usuário está logado na rede: Nome do usuário, data e hora em que o usuário foi logado.
+	whoami: Retorna apenas o nome de como o usuário está logado na rede.
+	ping: Manda uma mensagem para um host de nossa preferência e verifica se o host está disponível para ser realizada uma comunicação.
+		Exemplo: ' ping amazon.com '.
+
+	dig: Traz informações sobre DNS.
+	dig + host de preferencia + '+ short': Traz apernas o endereço de IP do host de nossa preferência.
+	traceroute: Traça a rota da nossa rede local até um host de preferência. 
+	whois: Traz mais informações ainda sobre determinado host de nossa preferência.
+	finger: Traz toda a informação do usuário que está logado no host.
+	w: Exibe informações detalhadas sobre o usuário do computador na rede.
+
+## Controle de Usuário, grupos e permissões.
+	Adicionando usuários no sistema:
+		Para adicionar um novo usuário no Linux deve-se usar o comando 'useradd + nome do usuário', pórem essa funcionalidade somente pode ser utilizada
+		pelo usuário root que é o usuário de maior acesso no Linux. Sendo assim deve ser realizada um aumento de nível de privilégio
+		para então poder adicionar o novo usuário, utilizando o comando sudo antes do comando adduser.
+	
+	Trocando de usuário e alterando sua senha.
+		Para que a troca de usuário seja realizada deve ser utilizado o comando su + nome do usuário. Após isso 
+		será solicitado a senha de acesso ao usuário para qual a pessoa que está na máquina deseja alterar. Tendo a senha sido digitada corretamente 
+		ocorrerá a troca do usuário.
+
+	Trocando senha de um usuário.
+		Para alterar a senha do usuário o comando 'passwd + nome do usuário' deverá ser acionado. Será solicitado a senha atual, caso tenha a senha sido digitada corretamente o 
+		a pessoa que está utilizando a máquina poderá alterar o senha de usuário.
+
+	Exibir informações de login e remover user.
+
+		Para visualizar as informações de login de todos os usuários do sistema usamos o comando 'lastlog'.
+		Comando 'Last': Exibe uma listagem de entrada e saída do usuário no sistema.
+		Comando 'Logname': Exibe o nome do usuário logado na seção atual.	
+		Comando 'id': Exibe todos os identificadores do usuário logado na seção atual. Irá mostrar o usuário e os grupos no qual
+			esse usuário pertence.
+
+		Arquivo 'passwd': quando utilizamos o comando 'cat' dentro do diretório '/etc/passwd' é exibido todos os usuários.
+		
+		Remover um usuário e a pasta pessoa do usuário: Ao utilizar o comando ' userdel -r + nome do usuário ' será solicitada a senha do usuário que a pessoa está tentando
+		deletar, caso a senha tenha sido digitada corretamente o usuário será deletado, mas para que isso ocorra a pessoa deverá escrever o comando ' sudo ' antes do comando userdel
+		já que está ação se trata de uma ação de super usuário.
+
+	Criar grupos e gerenciar os usuários.
+
+	Explanation about gruops: Grupos permitem organizar usuários e definir permissões de acessp a arquivos e diretórios de forma mais fácil.
+	Para exebir todos os grupos que existem no sistema digitamos o comando 'cat' dentro do diterório 'etc/group'. Toda vez que criamos um usuário também é criado um grupo para ele.
+
+	Para exibir a quais grupos um usuário pertence, devemos digitar o comando 'groups'.	
+
+	Para criar um grupo devemos digitar o comando 'addgroup + nome do grupo', mas para fazer isso devemos antes do comando add group digitar o comando sudo
+		já que este comando de criar um grupo somente é habilitado para um super usuário. Caso a senha do root já tenha sido gravada não será necessário
+		a digitalização da senha de acesso do usuário, caso contrário essa ação será executada antes de prosseguir para a criação do grupo em si.
+	
+	Adicionar um usuário a um grupo: Para adicionar um usuário em um grupo devemos digitar o comando ' adduser + nome do usuario + nome do grupo '. Vale ressaltar a utilização do comando sudo 
+		antes do comando 'adduser'.
+
+	Adicionar um usuário a um grupo 2: Para adicionar um usuário a um grupo devemos acionar o comando ' sudo adduser gpasswd -a +nome do usuário + nome do grupo ',
+		desde que o usuário esteja dentro do arquivo 'sudoers'.
+	
+	Remover um usuário de um grupo: Para remover um usuário de um grupo acionamos o comando 'sudo gpasswd -d + nome do usuario + nome do grupo'.
+
+	Remover um grupo: Para remover um grupo da nossa máquina acionamos o comando 'su + nome do usuário' para retornarmos ao nível de usuário, será solicitada a senha do usuário, logo após a digitação da senha, acionamos 
+		o comando 'sudo groupdel + nome do grupo'.
+
+	Listar todos os grupos no sistema: Digitamos " cat /etc/group ";
+
+ 
+	sudo passwd root: define a senha de acesso para o usuário root;
+	
+
+Permissoes Linux: 
+	Permissoes em arquivos e diretorios servem para restringir acessos como: leitura, escrita e execucao.
+	R-Read;
+	W-Write;
+	X-eXecution
+ ls -lh: Verifica Permissoes em um diretorio. 
+	Quando a letra D aparece na frente do tipo de permissoes dos itens listados significa que aquele item e um diretorio, e quando aparece um hífen significa que aquele item e um arquivo.
+
+Chmod Octal: A mascára octal e composta por numeros sob a base 8 ou seja de 0 a 7 onde: 
+	O primeiro digito representa o dono do ficheiro/diretorio (u)
+	O segundo digito representa o grupo (g)
+	O terceiro grupo representa os outros (o)
+	As permissoes são especificas para cada grupo. 
+	Caso queiramos adicionar mais de uma permissão, devemos somar os valor na hora de aplicar as mudanças, lembrando que a soma e feita por grupo então se quiser permissão de escrita e execucão para o dono do arquivo e leitura e execucao para o nível de grupo o numero a ser colocado no terminal será 350, e assim sussesivamente.
+	
+
+Compactadores
+	Compactadores são programas que diminuem o tamanho de um arquivo ou diretorio
+Extensões
+	As extensões identificam o tipo de um arquivo e o programa necessário para manipular o mesmo, dezenas de extensões identificam arquivos compactados, quando um arquivo e compactado, uma extensão e adicionada ao nome do arquivo.
+	Exemplo:
+		Se um arquivo e compactado pelo programa rar, o mesmo recebera uma extensao .rar
+		Ao descompactar a extensão e removida do arquivo.
+
+Tipos de compactadores
+	GZIP – Compactador muito usado, possui uma taxa excelente de compactacão
+		Uso: gzip arquivo.txt
+	GZIP -9 arquivo.txt: Este tipo de compactacão usa a compactacão máxima.
+		Uso: gzip -9 arquivo.txt
+	ZIP
+		Uso: zip arquivo.zip arquivo.txt
+	BZIP2
+		Uso: bzip2 arquivo
+	RAR: Necessita ser instalado na primeira utilização
+		Uso:
+		rar a arquivo.rar arquivo
+
+Descompactação
+		Uso: gunzip arquivo.txt.gzip
+		Uso: gunzip -9 arquivo.txt.gzip
+		Uso: Unzip arquivo.zip
+		Uso: bzip2 -d arquivo.bz2
+		Uso: Rar x arquivo.rar
+
+Aquivadores
+	Um "arquivador" junta vários arquivos em um só, mas pode ser usado em conjunto com um compactador para armazenar arquivos compactados.
+	
+	Tipos de Aqruivadores:
+	
+		TAR: O tar é um arquivador muito utilizado no Linux até mesmo em arquivos de sistema.
+			Uso: tar -cf aulasredes.tar aulasredes.txt
+
+		Além de utilizar o arquivador, podemos também compactar a arquivação com o gzip, por exemplo:
+			gzip Arquivo.tar
+		Descompactação do gzip:
+			tar -xvf arquivos.tar.gz
+				*Isso acarretará na descompactação do arquivo tar e na extração dos arquivos inseridos dentro do compactador*
+	
+		para compactar/descompactar para um diretório em específico podemos utilizar a sentença '-C + diretório de destino', exemplo:
+			tar -xvf arquivos.tar.gz -C ~/Diretório
+		zip arquivo.tar.zip arquivos.tar
+		rar a arquivos.tar.rar arquivos.tar
+		bzip2 arquivos.tar
+
+		*No caso do compactação com o zip, caso queiramos descompactar para um diretório específico devemos primeiros tirar a compactação do tipo zip para depois
+			podermos extrair para um diretório em específico*
+
+
+Pacotes
+	São programas colocados detro de um arquivo identificados por sua extensão, e incluem arquivos necessários para a instalação de um programa.
+		Existem pacotes com a extensão .deb, .rpm e outros.
+
+Gerenciadores 
+	Gerenciadores de Pacotes são sistemas que possuem resolção automática de dependências entre pacotes, método fácil de instalação de pacotes
+		Exemplos de Gerenciadores: dpgk, apt e yum.
+
+	Instalação APT:	
+	 	sudo apt install 'nome do pacote'
+	Atualização APT:
+		sudo apt upgrade 'nome do pacote' 
+	Remoção APT:
+		sudo apt remove 'nome do pacote'
+	Atualização do Sistema por APT:
+		apt update && apt upgrade
+	Sites de Pacotes 
+		pkgs.org
+		rpm.pbone.net
+
+		Instalação 
+	
+			DPKG: Gerenciador de pacotes para instalar ou remover pacotes do tipo deb
+				instalação: sudo dpkg -i
+		Descrição do Pacote:
+			DPKG
+				sudo dpkg -l pacote.deb
+		Remoção:
+			DPKG
+			sudo dpkg -r nomedopacote (O nome do pacote está na descrição do pacote)
+
+Usando o Fedora
+
+	Instlacao RPM:
+		rpm -ivh pacote.rpm
+	Atualizacao RPM:
+		rpm -U pacote.rpm
+	Remocao RPM:
+		rpm -e pacote.rpm
+	Instalacao Yum:
+		yum install pacote
+	Atualizacao Yum:
+		yum update pacote
+	Remocao Yum:
+		yum remove pacote
+
+	
