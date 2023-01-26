@@ -1,0 +1,61 @@
+	Introdução a Data Science
+	   Fundamentos para Data Science
+		- Otimização: Otimização dos modelos de Machine Learning e Algoritimos.
+		- Probabilidades e Simulação: Estudar um comportamento aleatório, fazendo distribuição de probrabilidades.	
+		- Amostragem e Planejamento: Como retirar uma amostra, já que temos vários tipos de amostragem, como amostragem simples, por conglomerado, estratificada etc.
+		- Métodos de Inferência: Como eu consigo inferir algo da população por exemplo, dada uma amostra.
+
+	    Modelos Estatísticos
+		- Métodos Multivalorados: Consiste em um conjunto de métodos estatísticos utilizados em situações em que várias variáveis são medidas simultaneamente em cada elemento amostral.
+		- Regressão e Extensões: Há vários tipos de regressões e o modelo de regressão a ser utilizado vai depender do dado, é o dado que define o modelo de algoritmo a ser utilizado e não o contrário
+		- Forecasting e Sobrevivência: Ao utilizar o forecasting estamos querendo fazer previsões ao longo do tempo, exemplo: prever demanda de 'ácool'em refinarias.
+	   Mineração de Dados
+		- Análise de Rede: Tudo depende do dado, nesse nível estamos falando sobre análise de grafos por exemplo.
+		- Mineração de Texto: Conseguimos transcrever o texto de uma ligação e fazer um modelo em cima disso, ou seja análise de Linguagem Natural
+		- Engenharia de Características: Tratamento do dado, onde tentamos criar novas informações, tentamos criar variáveis que o nosso modelo possa trazer algo positivo na descriminação de um alvo que estamos buscando.
+		- Machine Learning: Muito comum o com caso de regressão de modelo estatístico.
+	   Exploração e Comunicação de Dados
+		- Processos de ETL com Python e R:
+		- Visualização de Dados:
+		- Relatórios Dinâmicos:
+		- Web Scraping: 
+	   Plataformas de Big Data
+		- Data Warehouse e Integração
+		- SQL,NoSQL  e NewSQ
+		- MapReduce com Hadoop e Spark
+	   Infraestrutura Computacional
+		- Computação em Nuvem
+		- Infraesttrutura de Software
+		- Processamento de Alta Performance
+
+	   Tipos de Aprendizagem de Máquina
+		Classical Machine Learning - Supervisionada:
+			Programa de Modelagem em que queremos prever um certo evento de interesse de forma massificada, dado as características dos indivíduos no modelo. Estamos falando de prever um evento observável, a ideia do modelo é fazer uma antecipação do problema.	   
+	   	Classical Machine Learning - Não Supervisionada
+			Quando não temos uma variável resposta pré-definida estamos falando de um modelo Não Supervisionado, de forma geral esse modelo é composto apenas pelas características presentes no conjunto de dados analisados, estamos falando em uma construção de modelo de cluster, onde a idéia é agrupar indivíduos que têm características similiares de dentro do grupo e características diferentes de fora dos grupos, quando estamos falando de modelo de associação estamos contruindo um modelo que irá associar por exemplo, produtos de uma cesta de supermercado. Queremos associar essas duas informações com uma compra de um óleo por exemplo. E por último o modelo de Redução de Dimensão, caso queiramos reduzir a quantidade de colunas de dados de um conjunto de dados sem perder tanta informação presente nessas colunas, ou seja queremos criar poucas novas variáveis com base em uma combinação de todas as outras disponíveis, mas que essas poucas novas disponíveis tenham o máximo de informações intrínsecas dessas variáveis originarias.
+		Algoritmos, Pacotes e Variáveis
+			*Supervisionados*
+				- Variáveis pré-definidas: Continua ou Categórica
+				+ Pacotes:
+					ScikiLearn: Regressão e Classificações.
+					CatBoost: Regressão e Classificações.
+					LightGBM: Regressão e Classificações.
+					dmlc XGBoost: Regressão e Classificações.
+				+ Algoritmos Mais Utilizados - ScikitLearn
+			 		Regressão Linear Simples/Multipla
+					Regressão Logística/Ridge
+					Floresta Aleatória
+					ExtraTree
+					Árvore
+					Entre Outros...
+			*Não Supervisionados*
+				- Não temos variáveis respostas pré-definidas.
+				+ Pacotes:
+					- ScikitLearn
+					- Keras
+ 				+ Algoritmos Mais Utilizados
+					Análise de Agrupamento: K-means, Spectral, Hierárquico
+				+ Redução de Dimensionalidade
+					Componentes principais, Decomposição de valor singular
+				+ Sistemas de recomendação
+
