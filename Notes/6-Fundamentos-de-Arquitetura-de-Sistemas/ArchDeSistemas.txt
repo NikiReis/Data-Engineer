@@ -1,0 +1,57 @@
+# Vantagens e Desenvolvimento de Web Services
+	## O que são Web Services:
+		Serviços Web ou Web Services são soluções para que aplicações se comunicarem independentemente de linguagem de programação,
+			softwares e hardwares utilizados.
+		Inicialmente Seviços Web foram criados para trocar mensagens utilizando a linguagem XML (Extensible Markup Language) sobre
+			o protocolo HTTP sendo identificado URI(Uniform Resource Identifier).
+		Podemos dizer que Serviços Web são API's que se comunicam por meio de redes sobre proocolo HTTP.
+	*Todo Serviço Web é uma API, mas nem toda API é um Serviço Web*
+	Vantagens de se Utilizar um Web Service:
+		- Linguagem Comum	
+		- Integração
+		- Reutilização de Implementação
+		- Segurança
+		- Custos reduzidos
+	Principais Tecnologias
+		- SOAP
+		- REST
+		- XML
+		- JSON
+	## Estrutura Soap:
+		Acronomo de Simple Object Access Protocol, protocolo baseado em XML para acessar serviços principalmente por HTTP.
+		Pode-se dizer que SOAP é uma definição de como os web services se comunicam.
+		Foi desenvolvido para facilitar integrações entre aplicações.
+
+		Vantagens:
+			- Permite integrações entre aplicações, independente de linguagem, pois usa como linguagem comum o XML.
+			- É independente de plataforma e software.
+			- Meio de transporte genérico, ou seja, pode ser usado por outros protocolos além do HTTP.
+		XML
+			- Extensible Markup Language.
+  			- É uma linguagem de marcação criada na década de 90 pela W3C.
+			- Facilita a separação de conteúdo.
+			- Não tem limitação de criação de tags.
+			- Linguagem comum para integrações entre aplicações.
+		Estrutura SOAP
+			- O "SOAP Message" possui uma estrututra única que deve sempre ser seguida.
+
+			  	Estrututa SOAP
+			  |______SOAP Envelope______|
+			  |	   |SOAP Header|    |
+			  |	   |SOAP Body  |    |
+
+		Toda a estrutura do SOAP, possui estrutura única deve ser seguida, toda vez que formos mandar uma mensagem XML, documento XML essa mensagem vai seguir essa estrutura acima.
+ 
+		*Estrutura SOAP*
+			- SOAP Envelope é o primeiro elemento do documento e é usado para encapsular toda a mensagem SOAP. Encapsular a mensagem significa que toda a mensagem fica dentro do "envelope"
+			- SOAP Header é o elemento onde possui informações de atributos e metadados da requisição. Onde fica, o IP de origem, DNS, credenciais de autorização etc.
+			- SOAP Body é o elemento que contém os detalhes da mensagem. Onde de fato fica o conteúdo da mensagem 
+	## Entendendo o que é WSDL e XSD
+	   *WSDL - Espécie de contrato (condições) que é definido pelo serviço com a função de descrever como os Web Services funcionam*
+		- WSDL: Web Services Description Language.
+		- Usado para descrever Web Services, funciona como um contrato do serviço.
+		- A descrição é feito em um documento XML, onde é descrito o derviço, especificações de acesso, operações e métodos.
+	    
+	   XSD - XML Schema Definition
+		- É um schema no formato XML usado para definir a estrutura de dados que será validada no XML.
+		- O XSD funciona como uma documentação de como deve ser montado o SOAP Message (XML) que será enviado através de Web Service.
