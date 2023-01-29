@@ -60,3 +60,6 @@ Cloud
 
 Broker -> Worker -> Data Store: Armazena cada posição geográfica recebida identificando o usuário, data e hora permitindo reontruir rotas inteiras.
 Broker -> Worker -> Cache -> Gráficos: Apresenta em tempo real a última posição de cada usuário no mapa e a quantidade de usuários por horas.
+
+Arquitetura é questão de escolha
+Como assim escolha ? Precisamos escolher uma solução, uma ferramenta, uma plataforma, um protocolo e um local e armazenamento que completem a solução de problema que nos foi empregada.
