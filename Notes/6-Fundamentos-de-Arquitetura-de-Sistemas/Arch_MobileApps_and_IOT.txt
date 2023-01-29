@@ -1,0 +1,62 @@
+Conceitos de IOT
+	Por que conectar as coisas ?
+		Embutir sensores em objetos do dia-a-dia
+		Coletar dados dos sensores
+		Usar o dado para tomada de decisões
+	Desafios da IOT
+		Privacidade e Segurança
+		Quantidade exponencial de dispositivos conectados na rede
+		Ser capaz de processar e armazenar uma enorma quantidade de informações.
+		Gerar valor a partir dos dados coletados
+
+Arquitetura de IOT e Protocolo de Comunicação
+	Considerar atributos na escolha de dispositivos:
+		Baixo consumo de energia
+		Rede de dados limitados
+		Resiliencia
+		Segurança
+		Customização
+		Baixo Custo
+	Arduino
+		Plataforma de Prototipagem.
+		Com entradas e saídas.
+		Desenvolvedor escreve em C/C++.
+		Interface serial ou USB.
+		Shields.
+	Embarcados
+		Microcontrolador.
+		Sistema operacional real time.
+		Embarcado.
+		Uso industrial, medico, militar, transporte.
+	Minicomputadores (Raspberry Pi)
+		Computador completo.
+		Hardware integrado em uma única placa.
+		Roda SO Linux ou Windows.
+		Uso doméstico e Comercial.
+	Protocolo de IOT (MQTT)
+		Base na pilha do TCP/IP.
+		Protocolo de mensagem assícrona (M2M).
+		Criado pela IBM para conectar sensores de pipelines de petróleo a satélites.
+		Padrões OASIS suportado pelas linguagens de programação mais populares.
+	
+	flexibilidade dos tópicos
+		mqtt(protcolo)://broker.io(broker)/hfewufw(user_id)/gps(sensor)/position(info type)
+	
+	QoS 0
+		Nivel Mínimo de menor esforço
+		Sem garantia de Entrega
+		Mensagem não é retransmitida
+	QsO 1
+		Garante que a mensagem foi entregue no mínimo uma vez ao recebedor.
+		Mensagem pode ser retransmitida se não houver confirmação de entrega.
+	Qso 2 
+		Garante que a mensagem foi entregue no mínimo uma vez ao recebedor.
+		Mensagem pode serretransmitida se não houver confirmação de entrega.
+
+Cloud
+	Grande e cada vez maior o número de devices conectados
+	TBs ou Pbs de infromações
+	Potencial global de escalabilidade
+
+Broker -> Worker -> Data Store: Armazena cada posição geográfica recebida identificando o usuário, data e hora permitindo reontruir rotas inteiras.
+Broker -> Worker -> Cache -> Gráficos: Apresenta em tempo real a última posição de cada usuário no mapa e a quantidade de usuários por horas.
