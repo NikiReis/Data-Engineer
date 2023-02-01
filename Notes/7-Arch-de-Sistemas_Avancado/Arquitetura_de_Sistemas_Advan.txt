@@ -1,0 +1,100 @@
+Conceitos de Integração de Sistemas e Messageria
+	O que é arquitetura de messageria:
+		Arquitetura em messageria é criação de mensagens em operações realizadas em serviços de um sistema. Exemplo: Proxy HTTP fazer uma requisição para um serviço interno aonde ele se conecta com uma API  ou serviço externo e uma mensagem é criada, essa mensagem pode ser consumida por outros serviços internos.
+		A Arquitetura em Messageria nos permite que consigamos ter serviços que se comunicam com aplicações externas e serviços que não conseguem se conectar com aplicações externas, mas consomem mensagens de serviços que tiveram comunicação externa, como por exemplo cadastro de usuário.
+
+	Pros e Contras de uma Arquitetura com Messageria
+		Pros:
+			Desacoplamento
+			Fácil Plug & Play
+			Comunicação Assíncrona
+			Simples Escalabilidade
+			Broadcasting
+			Permite Event Source
+		Contras:
+			Single Point Of Failure
+			Difícil Monitoramento
+	Gerenciando erros em uma arquitetura assíncrona de messageria:
+		- Dead Letter Queue (Filas de re-tentativas): Dado que nós temos serviços que estão executando assíncrona dos outros, nós não temos uma maneira "fácil" de rastrear e indentificar que o serviço falhou.
+		- Monitoramento entre serviços
+		- Rastreamento de fluxo
+	
+	   Inconsistência de dados:
+		
+		web -> proxy http -> adiciona cartão -> serviço de carteira -> message broker
+					*Exemplo do problema em adiquirição de um plano de serviços*
+		
+		Rastreamento de Fluxo: Verificação dos Logs.	
+
+		
+
+
+Arquitetura de Dados Não Estruturados e Business Intelligence
+*Fundamento de Arquiteturas de Sistemas*
+
+	Business Intelligence em Modelos de Dados: Ecossistema que fornece ferramentas para a tomada de decisões estratégicas de negócios/modelo, ou seja ferramentas voltada para toda a condução de diretoria de área de inteligência dentro da corporação.
+		O BI é composto por:
+			- Ferramentas
+			- Infraestrutura
+			- Profissionais (corpo técnico)
+			*Dados*
+
+		*Os dados para BI e em geral, essêncialmente dentro de uma corporação vêm de dentro de um SGBD, os dados que vêm desse sistemas podem ser complementados com outras informações externas 
+à empresa, geralmente são incorporadas através do corpo técnico de BI*
+
+		*Uma visão básica e solução de BI necessita que tenhamos:
+			- Infraestrutura
+			- Gerenciamento de dados
+			- Analytics 
+			- Compartilhamento 
+			- Ferramentas Gerais: Como controle de acessos e gerenciamentos de falha
+		
+		Algumas das ferramentas mais conhecidas de BI:
+			- Power BI
+			- Tableu
+			- IBM Cognos Analytics
+			- Spotfire
+			- Oracle
+			- SAS
+			- SAP Business
+			- QLIKView
+
+	Conceitos de Data Warehouse:
+		Estratégia/Estilo de modelagem de dados, para acumulá-los de forma eficiente e satisfatória para apoio ao BI.
+		O conceito de Data Warehouse surgiu bem antes dos conceitos de BigData e DataLake.
+		OLTP: Normalmente tende a atender uma gama muito grande de usuários.
+		OLAP: Normalmente atende uma gama menor de usuários, OLAP é mais nichado.
+
+		*OLAP e OLTP são muito divergentes*
+
+		*OLAP: Os dados são históricos e não voláteis, isso significa que eles não irão sofrer alteração contra a ação do tempo, exceto em casos muitos raros onde uma correção é necessária devido ao fato de uma informa~ção ter sido armazenada erroneamente*
+		*OLTP: Extremamente voláteis, passivos de exclusão, inserção e modificação o tempo todo*
+	
+		Em DW normalmente uma recuperação de dados se dar através de consultas SQLs em banco de dados relacionais, mas há uma problemática pois pode haver conflito de concorrência entre OLAP e OLTP, pelo fato de exigir um poder computacional maior.
+		*É mias vantajoso que tenhamos uma estrutura já consolidada da situação atual ou passada de OLTP, isso significa uma modelagem OLAP, pois é muito menos custoso computacionalmente,concorrência e visão*
+		*O conceito mais impactante é que a estrutura de relacionamento ocupa processamento do sistema toda vez que vamos incluir um avenda, por exemplo, necessitamos fazer uma vasta análise para garantir que não ocorra nenhuma inconsistência no banco de dados*
+
+	O que é BigData e Dados Não Estruturados:
+		BigData: é um termo que descreve o grande volume de dados tanto estruturados quanto não estruturados. BigData então, passa a ser formatos diversos de informação onde precisamos tirar algum tipo conhecimento, essas informações podem vir dos mais variados formatos: áudio, imagens, documentos de texto etc.
+		
+		Dados Semi-Estruturados: Obedece uma estrutura básica, mas podemos ter ou não informações e isso não é uma regra dentro do sistema e aceitam alterações sem que haja a necessidade de uma regra muito explícita do que pode ou não entrar. Com base nisso surgiu os banco de dados NoSQL.
+		
+
+		Bancos NoSQL mais conhecidos:
+			- MongoDB 
+			- Redis 
+			- Cassandra
+			- ApacheHbase
+			- Riak
+		Ferramentas Para Tratamento de Dados Não Estruturados:
+			- Hadoop
+			- Apache Spark
+			- HDFS
+			- Apache Storm
+			- DataTorrent
+			- Ceph
+			- Google BigQuery
+		
+	DataLake vs BigData
+		DataLake: Uma espécie de BigData, porém mais reservado/corporativo/mais tratado. 
+		
