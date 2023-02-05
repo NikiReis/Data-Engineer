@@ -173,3 +173,17 @@ Desenvolvimento e Operação de Software Integrado (DevOps)
 
 		Learning: O aprendizado contínuo visa gerar conhecimento através da experimentação. Hipóteses são melhores do que uma certeza imediata. Este caminho é fruto do processo científico e produz segurança psicológica.
 
+	Continuous Integration 
+		It's the same process for any enviroment staging, production, contingency, stress, etc each may have its particularities
+		Principais Ferramentas:
+			GitLab CI
+			Azure Pipelines
+			Jenkins
+			TravisCI
+			CircleCI
+			AppVeyor
+	Continuous Inspection
+		Principais Ferramentas:
+			Sonarqube
+			Code Climate
+			Codacy
