@@ -52,7 +52,7 @@ netstat -nltp
 sudo docker service scale web=3
 
 ## back-end
-sudo docker swarm join --token SWMTKN-1-5588kdu7gpmbptxphap7bwrpdmq3s4wdeilsiqubchqj49lhqd-6ri6df1cyb1cj809kxggwviho 192.168.0.28:2377
+sudo docker swarm join --token SWMTKN-1-178kdu7gpmgiwergwuefoxzqrpdmq3s4wdeilsiqubchqj49lhqd-6oi6df1cyb1cj809kxggwviho 192.168.0.28:2377
 hostname
 docker ps -a
 netstat -nltp
