@@ -278,3 +278,102 @@ O arquivo 'postgresql.conf'
 			REVOKE ALL ON DATABASE [database] FROM [role];
 
 
+	Database, Schemas e Objetos
+		Database 
+			É o banco de dados. Grupo de schemas e seus objetos, como tabelas, types, views, funções, entre outros.
+			Seus schemas e objetos não podem ser compartilhados entre si. 
+			Cada database é separado um do outro, compartilhando apenas usuários/roles e configurações do cluster PostgreSQL.
+
+		Schemas
+			É um grupo de objetos, como tabelas,types,views,funções,entre outros. É possível relacionar objetos entre diversos schemas.
+			Por exemplo: Schema public e schema curso podem ter tabelas com o mesmo nome (teste por exemplo) relacionando-se entre si.
+
+			CREATE SCHEMAS schema_name [AUTHORIZATION role_specification]
+
+			ALTER SCHEMA name RENAME TO new_name
+			ALTER SCHEMA name OWNER TO {new_owner|CURRENT_USER|SESSION_USER}
+			
+			DROP SCHEMA [nome]
+
+			Melhores Práticas
+				CREATE SCHEMA IF NOT EXISTS schema_name [AUTHORIZATION role_specification]
+				DROP SCHEMA IF EXISTS [nome];
+		Objetos
+			São as tabelas, views,funções,types,sequences,ente outros,pertencentes aos schemas.
+
+		Database
+			CREATE DATABASE name
+				[[WITH] [OWNER [=] user_name]
+				[TEMPLATE [=] template]
+				[ENCODING [=] encoding]
+				[LC_COLLATE [=] lc_collate]
+				[LC_CTYPE [=] lc_ctype]
+				[TABLESPACE [=] tablespace_name]
+				[ALLOW_CONNECTIONS [=] allowconn]
+				[CONNECTION LIMIT [=] connlimit]
+				[IS_TEMPLATE [=] istemplate]]
+
+			ALTER DATABSE name RENAME TO new_name
+			ALTER DATABASE name OWNER TO {new_owner | current_user | session_user}
+			ALTER DATABASE name SET TABLESPACE new_tablespace
+
+			DROP DATABASE [database_name]
+
+	Tabelas, Colunas e Tipos de dados
+		Conjuntos de dados dispostos em colunas e linhas referentes a um objeto comum.
+
+		As colunas são considerdas como "campos da tabelas", como atributos da tabela.
+		
+		As linhas de uma tabela são chamadas também de tuplas, e é onde estão contidos os valores, os dados.
+
+
+		Primary Key / Chave Primária / PK
+			No conceito de modelo de dados relacional e obedecendo as regras de normalização, uma PK é um conjunto de um ou mais campos que nunca se repetem
+			em uma tabela que seus valores garantem a integridade do dado único e a utilização do mesmo como referência para o relacionamento enre demais tabelas.
+	
+			Não pode haveer duas ocorrências de uma mesma entidade com o mesmo conteúdo na PK
+			A chave primária não pode ser composta por atributo opcional, ou seja, atributo que aceite nulo.
+			Os atributos identificadores devem ser o conjunto mínimo que pode identificar cada instância de uma entidade.
+			Não devem ser usadas chaves extras.
+			Não deve conter informação volátil.
+			
+		Foreign Key / Chave Estrangeira / FK
+			Campo, ou conjunro de campos que são referências de chaves primárias de outras tabelas ou da mesma tabela.
+			Sua principal função é garantir a integridade referencial entre tabelas.
+		
+		Tipos de dados
+			Numeric Types
+			Character Types
+			Binary Data Types
+			Date/Time Types
+			Boolean Types
+			Enumerated Types
+			Geometric Types
+			Network Address Types
+			Bit String Types
+			Text Search Types	
+			
+			UUID Type
+			XML Type
+			JSON Types
+			Arrays 
+			Composite Types
+			Range Types
+			Domain Types
+			Object Indetifier Types
+			pg_lsn Type
+			Pseudo-Types
+
+		DML 
+			Data Manipulation Language
+			Linguagem de Manipulação de dados
+			INSERT,UPDATE,DELETE,SELECT
+				*O select, alguns consideram como DML, como DQL, que significa data query language, que significa linguagem de consulta de dados*
+
+		DDL 
+			Data Definition Language
+			Linguagem de definição de dados
+			CREATE,ALTER,DROP
+
+
+
