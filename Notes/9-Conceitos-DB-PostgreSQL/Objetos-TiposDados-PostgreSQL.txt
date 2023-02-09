@@ -1,7 +1,7 @@
 O arquivo 'postgresql.conf'
 	Arquivo onde estão definidas e armazenadas todas as configurações do servidor PostgreSQL. Alguns parâmetros só podem
 	ser alterados com uma reinicialização do banco de dados. A view pg_settings, acessada por dentro do banco de dados,
- 	guarda todas as configurações atuais.
+	guarda todas as configurações atuais.
 
 	postgresql.conf
 		Ao acessar a view pg_settings, é possível visualizar todas as configurações atuais:
@@ -97,3 +97,184 @@ O arquivo 'postgresql.conf'
 
 		Schema
 			Conjunto de objetos/relações (tabelas,funções,views,etc).
+
+	Conceitos users/roles/groups
+		Roles (papéis ou funções), users e grupo de usuários são "contas", perfis de atuação em banco de dados,
+		que possuem permisões em comum ou específicas.
+
+
+		Nas versões anteriores do PostgreSQL 8.1, usuários e roles tinham comportamentos diferentes. Atualmente,
+		roles e users são alias.
+		
+		É possível que roles pertençam a outras roles;
+	
+	Administrando users/roles/groups
+
+
+		CREATE ROLE name [[WITH] option [...]]
+			SUPERUSER | NOSUPERUSER
+			| CREATEDB | NOCREATEDB
+			| CREATEROLE | NOCREATEROLE
+			| INHERIT | NOINHERIT
+			| LOGIN | NOLOGIN
+			| REPLICATION | NOREPLICATION
+			| BYPASSRLS | NOBYPASSRLS
+			| CONNECTION LIMIT connlimit
+			| [ENCRYPTED] PASSWORD 'password' | PASSWORD NULL
+			| VALID UNTIL 'timestamp'
+			| IN ROLE role_name [, ...]
+			| IN GROUP role_name [, ...]
+			| ROLE role_name [, ...]
+			| ADMIN role_name [, ...]
+			| USER role_name [, ...]
+			| SYSID uid
+
+
+
+		Exemplo:
+		
+			CREATE ROLE administradores
+				CREATEDB
+				CREATEROLE
+				INHERIT
+				NOLOGIN
+				REPLICATION
+				BYPASSRLS
+				CONNECTION LIMIT -1;
+
+			CREATE ROLE professores
+				NOCREATEDB
+				NOCREATEROLE
+				INHERIT
+				NOLOGIN
+				NOBYPASSRLS
+				CONNECTION LIMIT 10;
+
+			CREATE ROLE alunos
+				NOCREATEDB
+				NOCREATEROLE
+				INHERIT
+				NOLOGIN
+				NOBYPASSRLS
+				CONNECTION LIMIT 90;
+
+
+	Associação Entre Roles 
+		Quando uma role assume as permissões de outra role. Necessários a opção INHERIT.
+		
+		No momento de criação da role:
+			- IN ROLE (Passa a pertencer a role informada)
+			- ROLE (A role informada passa a pertencer a nova role)
+			
+		Ou após a criação da role:
+			- GRANT [role a ser concedida] TO [role a assumir as permissões]
+	 
+                CREATE ROLE professores
+                   NOCREATEDB
+                   NOCREATEROLE
+                   INHERIT
+                   NOLOGIN
+                   NOBYPASSRLS
+                   CONNECTION LIMIT 10;
+
+
+		CREATE ROLE daniel LOGIN CONNECTION LIMIT 1 PASSWORD '123' IN ROLE professores;
+			- A role daniel passa a assuir as permissões da role professores
+
+		CREATE ROLE daniel LOGIN CONNECTION LIMIT 1 PASSWORD '123' ROLE professores;
+			- A role professores passa a fazer parte da role daniel assumindo suas permissões.
+				
+		CREATE ROLE daniel LOGIN CONNECTION LIMIT PASSWORD '123';
+		GRANT professores TO daniel;
+
+
+	Desassociar membros entre roles
+		
+		REVOKE [role que será revogada] FROM [role que terá suas permissões revogadas]
+		
+		REVOKE professores FROM daniel;
+
+	Alterando uma role
+		ALTER ROLE role_specification [WITH] option [...]
+
+		where option can be:
+			
+	              ALTER ROLE name [[WITH] option [...]]
+                        SUPERUSER | NOSUPERUSER
+                        | CREATEDB | NOCREATEDB
+                        | CREATEROLE | NOCREATEROLE
+                        | INHERIT | NOINHERIT
+                        | LOGIN | NOLOGIN
+                        | REPLICATION | NOREPLICATION
+                        | BYPASSRLS | NOBYPASSRLS
+                        | CONNECTION LIMIT connlimit
+                        | [ENCRYPTED] PASSWORD 'password' | PASSWORD NULL
+                        | VALID UNTIL 'timestamp'
+
+	Excluindo uma role
+
+		DROP ROLE role_specification;
+
+	Administrando acessos (GRANT)
+
+		São privilégios de acesso aos objetos do banco de dados.
+
+		Privilégios:
+			- --tabela			- --function
+			- --coluna			- --language
+			- --sequence			- --large object
+			- --database			- --schema
+			- --domain			- --tablespace
+			- --foreign data wrapper	- --type
+			- --foreign server
+	
+		DATABASE
+			GRANT {{CREATE|CONNECT|TEMPORARY|TEMP}[,...] | ALL [PRIVILEGES]}
+				ON DATABASE database_name [,...]
+				TO role_specification [,...] [WITH GRANT OPTION]
+
+		SCHEMA
+			GRANT{{CREATE|USAGE}[,...] | ALL [PRIVILEGES]}
+				ON SCHEMA schema_name [,...]
+				TO role_specification [,...] GRANT OPTION
+
+		TABLE
+			GRANT{{SELECT|INSERT|UPDATE|DELETE|TRUNCATE|REFERENCES|TRIGGER}
+				[,...] | ALL [PRIVILEGES]}
+				ON {[TABLE] table_name [,...]
+					| ALL TABLES IN SCHEMA schema_name [,...]}
+				TO role_specification [,...] [WITH GRANT OPTION]
+
+	Administrando Acessos (REVOKE)
+
+		DATABASE 
+			REVOKE [GRANT OPTION FOR]
+				{{CREATE|CONNECT|TEMPORARY|TEMP} [,...] | ALL [PRIVILEGES]}
+				ON DATABASE database_name [,...]
+				FROM {[GROUP] role_name | PUBLIC}[,...]
+				[CASCADE|RESTRICT]
+
+		SCHEMA
+			REVOKE [GRANT OPTION FOR]
+				{{CREATE|USAGE}[,...] | ALL [PRIVILEGES]}
+				ON SCHEMA schema_name [,...]
+				FROM {[GROUP] role_name | PUBLIC}[,...]
+				[CASCADE|RESTRICT]
+
+		TABLE 
+			REVOKE [GRANT OPTION FOR]
+				{{SELECT | INSERT | UPDATE | DELETE | TRUNCATE | REFERENCES | TRIGGER}
+				[,...] | ALL [PRIVILEGES]}
+				ON {[TABLE] table_name [,...]
+					| ALL TABLES IN SCHEMA schema_name [,...]}
+				FROM {[GROUP] role_name | PUBLIC}[,...]
+				[CASCADE | RESTRICT]
+
+		REVOGANDO TODAS AS PERMISSÕES (SIMPLIFICADO)
+
+
+			REVOKE ALL ON TABLES IN SCHEMA [schema] FROM [role];
+			REVOKE ALL ON SCHEMA [schema] FROM [role];
+			REVOKE ALL ON DATABASE [database] FROM [role];
+
+
