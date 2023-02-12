@@ -38,3 +38,5 @@ INSERT INTO tipo_transacao VALUES (1,'PIX',TRUE,'2020-02-19'),
 
 SELECT * FROM tipo_transacao;
 
+SELECT * FROM cliente_transacoes;
+
