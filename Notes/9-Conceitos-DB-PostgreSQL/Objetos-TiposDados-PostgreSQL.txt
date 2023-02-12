@@ -375,5 +375,22 @@ O arquivo 'postgresql.conf'
 			Linguagem de definição de dados
 			CREATE,ALTER,DROP
 
+	Funcoes Agregadas
+		Forma auxiliar de organizar "statments", ou seja, blocos de codigos, para consultas muito grandes, gerando tabelas temporarias e criando 
+			relacionamentos entre elas.
+		Dentro dos statements podem ter SELECTs, INSERTs, UPDATEs ou DELETEs.
 
-
+		WITH STATEMENTS
+			
+			WITH [nome1] AS (
+				SELECT (campos,)
+				FROM tabela_A
+				[WHERE]
+			), [nome2] AS (
+				SELECT (campos,)
+				FROM tabela_b
+				[WHERE]
+			)
+			SELECT [nome1].(campos,),[nome2].(campos,)
+			FROM [nome1]
+			JOIN [nome2]
