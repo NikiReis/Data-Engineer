@@ -1,0 +1,157 @@
+Comandos Avançados da Structured Query Language (SQL)
+
+	Views
+		View são visões.	
+		São "camadas"mpara as tabelas.
+		São "alias" para uma ou mais queries.
+		Aceitam comandos de SELECT, INSERT, UPDATE e DELETE.
+	
+		CREATE [OR REPLACE] [TEMP | TEMPORARY] [RECURSIVE] VIEW name [(column_name [, ...])]
+			[WITH (view_option_name [= view_option_value] [,...])]
+			AS query
+			[WITH [CASCADE | LOCAL] CHECK OPTION]
+			
+
+		IDEMPOTÊNCIA
+
+			CREATE OR REPLACE VIEW vw_banco AS (
+				SELECT numero,nome,ativo
+				FROM banco
+			);
+
+			SELECT numero, nome, ativo
+			FROM vw_bancos;
+			
+			CREATE OR REPLACE VIEW vw_bancos (banco_numero,banco_nome,banco_ativo) AS (
+				SELECT numero, nome, ativo
+				FROM banco
+			);
+
+			SELECT banco_numero, banco_nome, banco_ativo
+			FROM vw_bancos;
+
+		INSERT, UPDATE e DELETE
+		
+			CREATE OR REPLACE VIEW vw_bancos AS (
+				SELECT numero, nome, ativo
+				FROM banco
+			);
+	
+			SELECT numero,nome,ativo
+			FROM bvw_ancos,
+
+			- Funcionam apenas para VIEWs com apenas 1 tabela
+			
+			INSERT INTO vw_bancos (numero,nome,ativo) VALUES (100,'Banco CEM',TRUE);
+			UPDATE vw_bancos SET nome = 'Banco 100' WHERE numero = 100;
+			DELETE FROM vw_bancos WHERE numero = 100;
+
+		TEMPORARY
+
+			CREATE OR REPLACE TEMPORARY VIEW vw_bancos AS (
+				SELECT numero,nome,ativo
+				FROM banco
+			);
+
+			SELECT numero,nome,ativo
+			FROM vw_bancos;
+
+			VIEW presente apenas na sessão do usuário. Se você se desconectar e conectar novamente, a VIEW não estará disponível.
+
+
+		RECURSIVE
+			
+			CREATE OR REPLACE RECURSIVE VIEW (nome_da_view) (campos_da_view) AS (
+				SELECT base
+				UNION ALL
+				SELECT campos
+				FROM tabela_base
+				JOIN (nome_da_view)
+			);
+			
+			- Obrigatório a existência dos campos da VIEW
+			- UNION ALL
+
+			CREATE TABLE IF NOT EXISTS funcionarios (
+				id SERIAL NOT NULL,
+				nome VARCHAR(50),
+				gerente INTEGER,
+				PRIMARY KEY(id),
+				FOREIGN KEY(gerente) REFERENCES funcionario(id)
+			);
+
+
+			INSERT INTO funcionarios (nome,gerente) VALUES ('Ancelmo',null);
+			INSERT INTO funcionarios (nome,gerente) VALUES ('Beatriz',1)
+                        INSERT INTO funcionarios (nome,gerente) VALUES ('Magno',1)			
+                        INSERT INTO funcionarios (nome,gerente) VALUES ('Cremilda',2)
+                        INSERT INTO funcionarios (nome,gerente) VALUES ('Wagner',4)
+
+			CREATE OR REPLACE RECURSIVE VIEW vw_funcionarios(id,gerente,funcionario) AS (
+				SELECT id, gerente, nome
+				FROM funcionarios
+				WHERE gerente IS NULL
+				UNION ALL
+				SELECT funcionarios.id,funcionarios.gerente,funcionarios.nome
+				FROM funcionarios
+				JOIN vw_funcionarios ON vw_funcionarios.id = funcionarios.gerente
+			);
+			
+			SELECT id, gerente, funcionario
+			FROM vw_funcionarios
+
+	
+                        CREATE OR REPLACE RECURSIVE VIEW vw_funcionarios(id,gerente,funcionario) AS ( 
+                                SELECT id,CAST(AS VARCHAR) AS gerente, nome
+                                FROM funcionarios
+                                WHERE gerente IS NULL
+                                UNION ALL
+                                SELECT funcionarios.id,funcionarios.gerente,funcionarios.nome
+                                FROM funcionarios
+                                JOIN vw_funcionarios ON vw_funcionarios.id = funcionarios.gerente 
+                        	JOIN funcionarios gerentes ON gerentes.id = vw_funcionarios.id
+			);
+                        
+                        SELECT id, gerente, funcionario
+                        FROM vw_funcionarios
+
+		WITH OPTIONS
+		
+			CREATE OR REPLACE VIEW vw_banco AS (
+				SELECT numero,nome,ativo
+				FROM banco
+			);
+		
+			INSERT INTO vw_bancos (numero,nome,ativo) VALUES (100,'BANCO CEM',FALSE)
+				-- OK
+
+			CREATE OR REPLACE VIEW vw_banco AS (
+				SELECT numero, nome, ativo
+				FROM banco
+				WHERE ativo IS TRUE
+			) WITH LOCAL CHECK OPTION; 
+
+			INSERT INTO vw_bancos (numero,nome,ativo) VALUES (100,'Banco CEM', FALSE)
+				-- ERROR
+				
+			CREATE OR REPLACE VIEW vw_bancos_ativos AS (
+				SELECT numero,nome,ativo
+				FROM banco
+				WHERE ativo IS TRUE
+			)WITH LOCAL CHECK OPTION;
+			
+			CREATE OR REPLACE VIEW vw_bancos_maiores_que_100 AS (
+				SELECT numero,nome,ativo
+				FROM vw_banco
+				WHERE numero > 100
+			)WITH LOCAL CHECK OPTION;
+
+			INSERT INTO vw_bancos_maiores_que_100 (numero,nome,ativo) VALUES (99,'Banco DIO',FALSE)
+				-- ERROR
+			INSERT INTO vw_bancos_maiores_que_100 (numero,nome,ativo) VALUES (200,'Banco DIO',FALSE)
+				-- ERROR
+
+			
+				
+			);
+			
