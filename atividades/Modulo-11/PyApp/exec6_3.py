@@ -32,7 +32,7 @@ class Television:
             self.isOn = True
 
     def channel_down(self):
-        if self.On:
+        if self.isOn:
             try:
                 self.current_channel -= 1
                 print(f'\nChannel: {self.Channels[self.current_channel]}')
@@ -47,13 +47,18 @@ class Television:
             self.isOn = True
 
     def display_channel(self):
-        print(f"Channel: {self.Channels[self.current_channel]}")
+        print(f"\nChannel: {self.Channels[self.current_channel]}")
 
     def run(self):
         while True:
-            choice = str(input('\nTurn tv on/off [tv]\nUp channel [uc]\nDown channel [dc]\nExit infinity loop [0]')).lower()
+            choice = str(input('\nTurn tv on/off [tv]\nUp channel [uc]\nDown channel [dc]: ')).lower()
             if choice == 'tv':
-                self.power()
+                if self.isOn:
+                    self.power()
+                    print('Exiting TV...')
+                    break
+                else:
+                    self.power()
             elif choice == 'uc':
                 self.channel_up()
             elif choice == 'dc':
@@ -67,4 +72,3 @@ class Television:
 
 tv = Television()
 tv.run()
-
