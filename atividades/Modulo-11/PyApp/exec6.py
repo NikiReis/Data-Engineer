@@ -18,10 +18,10 @@ class Calculator:
         self.Value1 = value1
         self.Value2 = value2
 
-    def sumn(self):
+    def sum(self):
         return self.Value1 + self.Value2
 
-    def substrac(self):
+    def subtraction(self):
         return self.Value1 - self.Value2
 
     def multiply(self):
@@ -31,16 +31,16 @@ class Calculator:
 while True:
     a = int(input('Type a value: '))
     b = int(input('Type another value: '))
-    op = str(input('Sum [s] / Multiply [m] / Subtract [sb]/ Close calculator [0]: '))
+    choice = str(input('Sum [s] / Multiply [m] / Subtract [sb]/ Close calculator [0]: '))
+    call = Calculator(a, b)
 
-    cal = Calculator(a, b)
-
-    match op:
-        case 's':
-            print(cal.sumn())
-        case 'm':
-            print(cal.multiply())
-        case 'sb':
-            print(cal.substrac())
-        case '0':
-            break
+    if choice == 's':
+        print(call.sum())
+    elif choice == 'm':
+        print(call.multiply())
+    elif choice == 'sb':
+        print(call.subtraction())
+    elif choice == '0':
+        break
+    else:
+        print('Invalid input, try again: ')
