@@ -49,7 +49,7 @@ tel = Television()
 
 while True:
 
-    op = str(input('\nTurn tv on/off [tv]\nUp channel [uc]\nDown channel [dc]:  ')).lower()
+    op = str(input('\nTurn tv on/off [tv]\nUp channel [uc]\nDown channel [dc]\nExit infinity loop [0]')).lower()
     match op:
         case 'tv':
             tel.power()
@@ -57,3 +57,5 @@ while True:
             tel.channel_up()
         case 'dc':
             tel.channel_down()
+        case '0':
+            break
