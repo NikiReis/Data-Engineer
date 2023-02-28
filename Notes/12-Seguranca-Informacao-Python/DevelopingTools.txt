@@ -24,3 +24,6 @@ Multithreading
 
 IPaddress Library:
 	This library has the capacity of create, manipulate IP addresses from IPv4 and IPv6 and even entire networks.
+
+Hashlib Library:
+	Implements an interface for many secure hashs algorithms such like SHA1, SHA256, MD5 and others.
