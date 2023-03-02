@@ -1,0 +1,63 @@
+Conceito de Arquitetura em Aplicações para Internet
+	Tipos de Arquitetura:
+		Monolito:
+			Primeiro tipo de aplicação existente. Geralmente ao inicio da vida de uma plicação esse é o tipo de arquitetura adotada e conforme ela vai crescendo pode haver a mudança do tipo de arquitetura.
+			No sistema de monolito a ideia é termos uma instância/aplicação como responsável para receber todas as requisições dos clientes e conforme a quantidade de requisições almenta distribuir as requisições para outras instâncias, para que assim se evite a queda do serviço por falta de capacidade computacional de processar as requisições dos clientes ou até por falta de disponibilidade.
+		Microsserviços:
+			O mais caótico dentre todas as arquiteturas, apesar de ter suas vantagens como destinar alguns tipos de requisições para uma instância específica e assim alivir a quantidade recurso computacional em cima de uma instância, além de não estarmos preso em apenas um tipo de tecnologia.
+			
+		Microsseviços #2:
+			Similiar ao anterior, ainda temos microsserviços, camada HTTP sendo respondida pelos microsserviços, porém a diferença é que não existe mais o canal de comunicação direta entre microsserviços, microsserviço 1 para o microsserviço 2, por exemplo. Neste caso há um message broker, vantagem é que nos garante que não um serviço não estará conectado diretamento no outro, se o serviço 1 precisar se comunicar com o 2 mas por algum motivo o 2 está fora do ar o serviço 1 não sá quebrado porque ambos já não estão mais conectados diretamente, são independentes, pórem se o serviço 1 precisar de uma informação para passar adiante ele colocará uma mensagem no message broker e quando o microsserviço 2 voltar a estar disponível ele receberá a mensagem vinda do serviço 1 pelo message broker o a interpretará e executar a operação e caso necessário acessar o banco de dados, fazer uma chamada para a API etc.
+			A vantagem é que não existe mais uma comunicação direta, se torna muito mais fácil trocar o serviço 2 por um outro ou por outra tecnologia ou deletar aquele serviço por exemplo.
+			A desvantagem é que caso ocorra um erro com o message broker toda a plataforma fica refem dele, consequentemente a aplicação pode ficar indiponível.
+	
+		Microsserviços #3
+			Microsserviços guiada por um estilo de arquitetura de pipeline. Neste tipo de arquitetura os clientes fazem a comunicação através de HTTP como qualquer outra arquitetura, porém ou invés do proxy HTTP direcionar o request direto para um determinado serviço, ele passa por um gerenciador de pipeline primeiro, e assim do gerenciador de pipelines para o serviço em específico, já que algumas requisições têm um passo a passo a ser feito, isso nos auxiliam com a redução de código, além da redução de código auxilia no ganho da qualidade do código que será produzido. Com essa arquitetura a request entra no proxy, passa para o gerenciador de pipeline o gerenciador verifica qual pipeline esse request tem que seguir. O gerenciador de pipeline tem que ser capaz de ativar um ROLLBACK para o estado inicial da transação caso algo dê errado durante a requisição evitando assim uma inconsistência, um estado inválido.
+			Uma desvatagem é que como todo o sistema está atrelado ao gerenciador de pipelines, caso o gerenciador venha a ficar fora dor todo o sistema ficará fora do ar também por estar atrelado ao gerenciador.
+
+Comparativo entre os Modelos Monolito e Microsserviços.
+	Monolito - Pos e Contras
+		Pros:
+			Baixa complexidade
+			Monitoramento Simplificado
+		Contra: 
+			Stack Única
+			Compartilhamento de recusrsos
+			Acoplamento
+			Mais complexo em escalabilidade
+
+	Pros e Contras Microsserviço #1
+		Pros:
+			Stack Dinâmica
+			Simples Escalabilidade
+		Contras: 
+			Acoplamento
+			Monitoramento mais complexo
+			Provisionamento mais complexo
+
+	Pros e Contras Microsserviços #2
+		Pros:
+			Stack Dinâmica 
+			Simples Escalabilidade
+			Desacoplamento
+		Contras:
+			Monitoramento ainda mais complexo
+			Provisionamento mais complexo
+
+	Pros e Contras Microsserviços #3
+		Pros:
+			Stack Dinâmica 
+			Simples Escalabilidade
+			Desacoplamento
+			Menor Complexidade
+		Contras:
+			Provisionamento tão complexo quanto a anterior
+			Plataforma inteira dependente do gerenciador de pipeline
+
+Gerenciamento de Erros
+	Onde é mais complexo:
+		Processos Assíncronos (Microsserviços #2)
+		Pipeline
+	Solução
+		Dead letter queue
+		Filas de re-tentativas

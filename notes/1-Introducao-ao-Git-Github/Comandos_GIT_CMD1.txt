@@ -1,0 +1,54 @@
+COMANDOS BÁSICOS PARA NAVEGAR NO TERMINAL DO WINDOWS
+
+'dir' : Lista os diretórios contidos na pasta em qual estamos situado, (lista as pastas);
+'cd' : Muda os diretório atual, permitge navegar entre as pastas;
+'cd .. ': Retorna um passo ou seja volta para a pasta anterior, retorna um nível na navegação;
+'cls' : Limpa a tela do termina;
+
+'mkdir' : Cria uma pasta / diretório, deve ser seguido do nome da pastas / diretório a ser criado;
+	'cd + espaço + nome diretorio + tab ': Auto completa o destino que estamos procurando, evitando assim que digitemos
+	grande linhas de comandos ou grande nomes de pastas,e então economizando tempo.
+
+'echo ': retorna no termina o que digitarmos;
+
+'echo >' : Redireciona o fluxo do output, e 'joga' para um arquivo, podemos nomear o arquivo e identificar que tipo de arquivo
+	queremos criar exemplo: C:\Users\Linek\Favorites\DIO_GIT_GITHUB>echo hello > hello.py. O que observamos aqui
+	é que a frase hello será direcionada para dentro do arquivo 'hello.py', ou seja depois do echo colocamos o que 
+	desejamos colocar dentro do arquivo, depois disso usamos o atalho direcionador ' > ' e após o atalho direcionador
+	digitamos para onde queremos colocar o que está antes do atalho, se escrevermos o nome de um arquivo que ainda
+	não exista ele será automaticamente criado;
+
+'del' : Deleta o arquivo que especificarmos dentro de uma pasta;
+'seta para cima ': Lista o histórico de comandos que usamos no terminal;
+'rmdir' : Remove / deleta o diretório que especificarmos;
+'ls': Lista os arquivos dentro de um diretório, através do Git-Bash.
+'mv': Move arquivos para um diretório específico de nossa preferência
+'add': adiciona um arquivo a uma pasta especifíca para podermos commitar esse arquivo.
+----------------------------------------------------------------------------------------------------------------
+
+Commandos Git
+'git init': Inicializa um repositório do tipo '.git' dentro da pasta que estamos trabalhando;
+
+'git config --global user.email "email" ': Resposável por buscar um usuário no github que tenha cadastrado a conta
+com o e-mail digitado e configura / conecta o git com o github, para que o github receba as ações da máquina em 
+que o comando está sendo realizado.
+
+'git config --global user.name "nickname" ': Realiza a mesma coisa que o comando anterio, pórem desta vez usando o
+nickname do usário como parâmetro.
+
+'git push: Empurra os arquivos/diretórios que estamos trabalhando em um repositório local 
+para um repositório remoto, desde que tenhamos cadastrado um repositório remoto em nossa máquina.
+
+'git add remote origin:' Cadastra um repositório remoto em nossa máquina para que possamos empurrar
+um arquivo / diretório do nosso repositório local para o repositório remoto.
+
+'git remote -v': Visualiza / mostra na tela, todos os repositórios remotos que foram cadastrados em nossa
+máquina.
+
+'git pull': Puxa do repositório remoto, os diretórios e os arquivos para o repositório
+local para que alterações possam ser feitas, caso tenha sido realizada alguma 
+alteração no código quando ele já estava no repositório remoto e que não tenha sido realizada
+no local, ou seja atualiza o código no repositório local para a versão mais recente, para que 
+a partir dessa versão mais recente, novas alterações possam ser feitas, e após terem sido realizadas essas
+alterações, não ocorra nenhum erro ao tentar realizar o git push - do(s) arquivo(s) e diretório(s) que nós acabamos
+de realizar o git pull e alterar - para o repositório remoto.

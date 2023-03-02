@@ -1,0 +1,179 @@
+Introducao ao Sistema
+	VM  e Container.
+
+		VM:
+			Ao se utilizar um Vistual Server para uma aplicacao, esta aplicacao tera o isolamento do SO, pois esta aplicacao estara em server virtual
+				que estara em uma maquina fisica, ou seja, o server virtual esttara rodando um SO diferente da maquina fisica e consequentemente um SO diferente de possiveis outros servers virtuais na mesma maquina fisica.
+		
+			Em um Virtual Server e habilitado a opcao de snapshot do servidor, gracas ao Hypervisor, assim garantindo uma seguranca de 
+				estado de funcionamento do Virtual Server para eventuais problemas de atualizacao por exemplo, com o snapshot, uma imagem do VS sera criada e armazenada em um arquivo temporario.
+		
+		Container:
+			Em um sistema de conttainer ao contrario de VM, nao ha mais um servidor virtual para rodar um aplicacao, isso significa que a aplicacao ira compartilhar do mesmo SO
+				que a maquina fisica. Tudo que for feito dentro da aplicacao e imutavel.		
+
+		Conceitos
+			VM:
+				Escalonamento Vertical
+				Dificil Atualizacao
+			Container
+				Escalonamento Horizontal
+				Facil Atualizacao
+		
+		Algumas Ferramentas:
+			Docker Swarm
+			Kubernets
+			Docker Kompose
+
+	Arquitetura do Docker
+
+		Terminologias:
+			Container Image:
+				Nada mais e do que o pacote com todas as dependencias para a criacao do nosso container.
+			Docekr FIle: 
+				Arquivo de texto que contem todas as informacoes para afazer a criacao da nossa imagem.
+		 	Build:
+				E a acao que cria uma imagem a partir de um docker file, temos o docker file com as instrucoes, o build le as informacoes e a partir disso realiza a criacao da nossa imagem
+			Container:
+				Instancia da nossa imagem que representa a execucao d nosso app,ou processo ou servico.
+			Volumes:
+				Permite com que o nosso container armazene arquivos, dados em disco. Ou seja se o container eventualmente vier a falhar, as informacoes salvas no volume nao serao perdidas.
+			Tag:
+				Ajuda no versionamento de nossas imagens.
+			Multi-stage Build:
+				Nada mais e que varios estagios de build, onde podemos utilizar um numero de build para compilar aplicacao e apartir disso chamar uma outra
+				imagem que roda em outra linguagem ou SO para fazer o run da nossa aplicacao.
+			Repository: 
+				Nada mais e do que uma colecao de imagem, igual ao repositorio que ja conhecemos.
+			Registry:
+				Servico que prove acesso do nosso docker ao nosso repositorio.
+			Docker Hub:
+				E como e conhecido o repositorio, e um repositorio publico, podemos colocar imagens publicas e privadas.
+				*Nativamente todos os produtos que sao 'dockerizados' nos podemos encontrar no docker hub*
+			Compose:
+				Ferramenta que utiliza uma metadata que podemos criar multiplos containers com pouquissimos comandos.
+
+		
+	Instalando o Docker no Linux:
+		Cgroup:
+			Grupo de controle, recurso do kernel que permite fazermos aloca e isolar recursos dentro de uma maquina linux.
+
+
+Primeiros passos com Docker
+
+	Principais comandos
+		Run: 
+			Efetiva a criacao do container
+		Ps: 
+			Lista os containers 
+		Info: 
+			Acesso as informacoes do docker
+		Images: 
+			Mostra as imagens realizadas para a criacao de nossos containers
+		Exec: 
+			Utilizado para executar um binario do nosso container para fazer a execucao do nosso ssh por
+				exemplo, para estarmos conectando no container.
+		Stop,Start: 
+		
+		Logs: 
+			Utilizado para verificar os logs do nosso container.
+		Inspect:
+			Podemos estar listando todas as configuracoes que estao sendo utilizadas em nosso container.
+		Pull:
+			Baixa as imagens dos nossos container, salvos em repositorio privado ou publico.	
+		Commit:
+			Commita as modificacoes em nossos containers.
+		Tag:
+			Para melhorar o versionamento.
+		Login/Logout:
+			Utilizado para fazer o login/logout do nosso repositorio publico ou privado.
+		Push: 
+			Compartilha as imagens dos nossos container para um diretorio publico ou privado apos a realizacao do build.
+		Search:
+			Procurar uma imagem.
+		Rm: 
+			Remover um container
+		Rmi:
+			Remover uma imagem
+		Export/Import:
+			Exportar ou importar um container.
+		Save/Load:
+			Utilizado para salvar uma imagem de docker, mas a imagem de container sera salva em um arquivo de texto.
+		
+		
+Rede Docker
+	Tipos de Rede:
+		Bridge: 
+			E a rede default do Docker, utilizado para a comunicacao de containers.
+		Host:
+			Remove o isolamento de rede, o container responde diretamente pela plcada do host.
+		Overlay: 
+			Permite a comunicacao entre container de hosts diferentes
+		Macvlan: 
+			Permite atribuir endereco MAC  ao container tornando ele visivel como um dispositivos fisico na rede
+		None:
+			Sem rede
+	
+Armazenamento no Docker 
+	Volume: 
+		Um disco virtual onde o docker engine tem total autonomia sobre ele, sendo assim o host nao precisa ter uma estrutura de arquivos.
+			Porem isso torna a leitura do disco mais lenta, mais arrastada, por questao do container estar verificando as montagens desses volumes nesses containers, os volumes tambem podem ser
+			criados durante a criacao dos containers. Mais aconselhavel para a utilizacao de ambiente replicados.
+	Bind Mounts:
+		Mapeamos um arquivo ou pasta do host para um arquivo ou uma pasta do container. E como se tivessemos um arquivo ou pasta compartilhada com o nosso container.
+		
+	Tmpfs Mounts:
+		Temos camadas de container, sendo a ultima camada sendo sussetivel a escritas, tudo que fizermos dentro do container em relacaoa a alteracao, atualizacao ou escrita sera salvo dentro dessa camada, ao reiniciarmos o container a info ainda estara nessa camada a nao ser que deletemos o container.
+	
+Projeto No Ar
+
+	Limites:
+		Basicamente podemos limitar atraves de comandos docker o quanto de memoria e processador queremos limitar para o uso do docker.
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
