@@ -1,8 +1,25 @@
 from bs4 import BeautifulSoup
 import requests
 
-data = requests.get('https://scholar.googleusercontent.com/scholar.bib?q=info:9OT7g3fE_OAJ:scholar.google.com/&output=citation&scisdr=CgUCgYmGENjzg576bBQ:AAGBfm0AAAAAZAP8dBTRV_N5UA-vtEJUU9aO5nlSi6Mx&scisig=AAGBfm0AAAAAZAP8dGq1igzSY_Iu5pwzC3QmkwOyyU-R&scisf=4&ct=citation&cd=0&hl=en').text
+data = requests.get('https://scholar.google.com/scholar?q=python&hl=en&as_sdt=0,5').text
 
 soup = BeautifulSoup(data, 'html.parser')
-dados = list(soup)
-print(dados[0:])
+lista = soup.find_all('div', class_="gs_ri")
+
+datalist = []
+newdata = {
+
+}
+for i in lista:
+
+  newdata['book'] = i.find("h3", a_='').text.strip().replace('[PDF][PDF]', '').replace('[BOOK][B]', '').replace('[HTML][HTML]', '')
+  newdata['authors'] = i.find("div", class_="gs_a").text.split('-')[0]
+  newdata['journal'] = i.find("div", class_="gs_a").text.split('-')[1]
+  newdata['year'] = publisher = i.find("div", class_="gs_a").text.split("-")[1].strip().split()[0]
+  newdata['publisher'] = i.find("div", class_="gs_a").text.split("-")[2].strip().split()[0]
+
+  datalist.append(newdata.copy())
+  newdata.clear()
+
+for x in datalist:
+  print(x)
