@@ -7,7 +7,11 @@ url = requests.get('https://scholar.google.com/scholar?q=python&hl=en&as_sdt=0,5
 soup = BeautifulSoup(url, 'html.parser')
 lista = soup.find_all('div', class_="gs_ri")
 
-book = authors = journal = year = publisher = []
+book = list()
+authors = list()
+journal = list()
+year = list()
+publisher = list()
 data = dict()
 
 for i in lista:
@@ -23,6 +27,11 @@ data['Journal'] = journal
 data['Year'] = year
 data['Publisher'] = publisher
 
-print(data)
 
-# with open('data_set.csv','w',encoding='utf8b') as archive:
+
+with open('data_set.csv', 'w', newline='') as archive:
+  writer = csv.writer(archive)
+  writer.writerow(data.keys())
+  for iteration in range(len(data.keys())):
+    writer.writerow([value[iteration].strip() for value in data.values()])
+
