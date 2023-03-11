@@ -1,0 +1,13 @@
+ETL - Definition:
+	E(Extract): Data are extract from different data sources.
+	T(Transform): Sent to the data prepare field, where it can be transformed and cleaned.
+	L(Load): Loeaded to a Data Warehouse.
+
+Tools and Packages:
+	Apache Airflow
+	Luigi
+	Bonodo
+	Bubbles
+	Petl
+	Pandas
+
