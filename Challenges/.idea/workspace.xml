@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc4577bc-f8b5-48e9-9d93-b971a2b96a90" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/arithmetic-solutions-python/code1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/arithmetic-solutions-python/code2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/arithmetic-solutions-python/code3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arithmetic-solutions-python/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/arithmetic-solutions-python/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
