@@ -1,0 +1,25 @@
+Course Objective
+	Introduct the BigData and Hadooo Theory, empowering us to undestand these two concepts and how they
+	can be apply.
+Data cenary nowadays:
+	Nowadays we have data being generated all the time, the quantity of generated data is growing even more, and these
+	data have a large range of datatypes.
+	
+	The IDC (International Data Corporation) predicts that in 2025 we'll hae 175 zettabytes of information.
+
+	Many of the data generated are created automatic, in Iot components, GPS, photos, videos etc.
+
+Estructure and Data Processing
+	Almost 90% of all the existing data, were generated in the last 4 years and the greater piece of these data are non-structured data.
+	
+	The Data can be defined in 3 diffent structures:
+		- Structured
+		- Semi-Structured
+		- Non-Structured
+	
+	Structured Data: Are the data that has well defined structures, rigid, that was previously planned to save them. For an example: Databases, 
+		Execel, delimited file, positional file.
+
+	Semi-Structured: 
+		Doesn't have totally defined/rigid structure and neither flexible, being a heterogeneous representation between structured and non structured.
+		For an example: JSON, XML.  
