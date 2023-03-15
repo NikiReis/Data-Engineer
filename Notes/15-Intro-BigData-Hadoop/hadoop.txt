@@ -1,0 +1,31 @@
+Hadoop
+	Created by Doug Cutting, is a open source framework that offers storing resources, management and distributed data 
+	processing  
+	One of the benefits of Hadoop is that it runs in low cost clusters and provides a horizontal scalability.
+
+	The Hadoop Architeture is formed by 4 base modules:
+		Commons: Java libraries and utilizers
+		MapReduce: Massive processing and parallel of data
+		YARN: Manage of the cluster resources
+		HDFS: Storing and manage of distributed data
+
+HDFS
+	Do the managing and storing od distributed data, and provides a fast access to the data.
+	
+	NameNode: Manages the files stored in the HDFS, it maps the location of each bloc and the location of their replications. By a performance question the NameNode
+		save the information in the memory level to later stored in hardisk where the standby NameNode search the data to keep synchronized with the original NameNode.
+	The DataNode store different blocs of different files, they need to report themselves to the NameNode, give the information which bloc is stored and all the chages
+		done in these blocs, and also share to the NameNode if its operable or not.
+	
+
+HDFS 
+O HDFS é tolerante a falhas e realiza automaticamente o balanceamento dos dados.
+Quando dizemos que ele é tolerante a falha queremos dizer que eles são replicados mais de uma vezvez, por padrão o arquivo é replicado três vezes.
+O tamanho default do HDFS é 128mb.
+
+
+MapReduce 
+
+	MapReduce é um modelo de programação do Hadoop que permite o processamento massivo em algoritmo paralelo e distribuído.	
+ 
+	

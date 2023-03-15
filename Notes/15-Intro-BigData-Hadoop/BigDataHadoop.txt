@@ -23,3 +23,19 @@ Estructure and Data Processing
 	Semi-Structured: 
 		Doesn't have totally defined/rigid structure and neither flexible, being a heterogeneous representation between structured and non structured.
 		For an example: JSON, XML.  
+
+BigData Definition:
+	BigData is a concept, that defines handle with a large mass of data through specialize tools, that permits the informations to be found, analysed
+	and utilized in habil time.
+
+	The BigData in his concept has the challenge of provides the 4Vs 
+		Volume
+		Velocity
+		Variety
+		Veracity
+	
+	Data Warehouse and DataLake are two concepts of data storing, one came from BI and the other BigData.
+	DataWarehouse - BI
+	DataLake - BigData
+
+	
