@@ -29,3 +29,16 @@ MapReduce
 	MapReduce é um modelo de programação do Hadoop que permite o processamento massivo em algoritmo paralelo e distribuído.	
  
 	
+Yarn
+	É resposável por distribuir os recursos computacionais como uso de memória e processamento para os jobs, otimizando o processo paralelo.
+	É quem define quem, quando e onde devem ser realizado os processamentos e quais recursos devem ser alocados para cada tarefa.
+	O que podemos dizer tambem, e que e possivel alocar um limite de memoria e processamento para cada fila.
+
+Componentes Ambientes BigData
+	Todos os componentes citados ate aqui, podem compor um ambiente bigdata 'on promise', porém utra opção seria adotar um abiente Big Data em cloud
+	ou até mesmo um abiente hibrido, onde temos uma oarte em cloud e a outra em on promise.
+	
+	As cloud oferecem basicamente os seguintes serviços:
+		IaaS: Infraestrutura como serviço;
+		PaaS: Plataforma como serviço;
+		SaaS: Software como serviço.
