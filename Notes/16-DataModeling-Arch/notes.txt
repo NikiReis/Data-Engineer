@@ -1,0 +1,109 @@
+Bigdata Architeture:
+DataLake -Remembering
+	E um repositorio centralizado ue permite armazenar todos os seus dados estruturados
+e nao estruturados em qqualquer escala. Voce pode armazenar seus dados como estao, sem ter 
+que estruturalos e executar difererentes tipos de analises - de paineis e visualizacoes a processamento
+bigdata, analises em tempo real e aprendizado de mauina para orientear as melhores decisoes.
+
+DataLake -  Elementos Essenciais 
+	Movimentacao de dados 
+	Armazene com seguranca
+	Analytics 
+	Machine Learning
+
+DataLake Desafios:
+	O principal desafio de uma arquitetura datalake e quandos dados brutos sao armazenados
+	sem supervisao de conteudo. Para que um datalake torne os dados utilizaveis, ele precisa ter	
+	mecanismos definidos para catalogar e proteger os dados. Sem esse elementos, os dados nao 
+	podem ser encontrados ou confiaveis, resultando em um 'pantano de dados'. Atender as necessidades 
+	de publicos mais amplos exigem que os data lakes tenham governanca, consistencia semantica e controle de acessos.
+
+DataLake e Cloud
+	Datalake sao uma carga de trabalho ideal para ser implementada na nuvem 
+	Fornece desempenho, escalabilidade, confiabilidade, disponibilidade e um conjunto	
+diversificado de mecanismos analiticos e enormes economias de escala.
+
+DataLake - tiers
+Um Datalake contem algumas camadas sao elas:
+
+Raw Zone: Armazena os dados brutos, assim como vieram das origens. Essa e tambem uma zona 
+onde os dados confidencias devem ser armazenados ja criptografados e registrados no catalogo de dados
+
+Trusted Zone:
+Transforma os dados brutos descentralizados em entidades centralizadas (Dta Quality e Camada Semantica)
+- 'fonte da verdade'
+
+Refined Zone - Armazena dados manipulados e enriquecidos com bases externas
+
+
+
+
+Modern Data Architeture
+
+Resposta que buscamos nesse tipo de arquitetura: "O que aconteceu ? Por que isso aconteceu ?"
+
+Arquiteturas de data lake para o objetivo de processamento real time, para um maior trabalho de forma online
+	Lambda vs Kappa
+	
+Abordagem da arquitetura Lambda:
+fonte de dados -> data lake -> DW| -> camada de visualizacao -> camada de consumo
+				 |-> camada de	
+
+
+
+fonte de dados -> camada streaming -> camada de analise| -> DW -> camada de visualizacao -> camada de consumo
+						       |-> camada de consumo
+
+
+Problemas dos Data Lakes:
+	ETL Muito complexos (podem gerar erros).
+	Diferentes tipos e camads de armazenamento de dados.
+
+
+Data Lakehouse
+
+	Sao habilitados por um novo design de sistema aberto e padronizado: implementacao de 
+estruturas de dados e recursos de gerenciamento de dados semelhantes aos de um data warehouse,
+diretamente no tipo de armazenamento de baixo custo para data lakes
+
+
+Modelagem de dados relacional
+Modelagem de dados: Criar um modelo que explique as caracteristicas de funcionamento e comportamento de um software
+
+Modelagem relacional: 
+	A modelagem relacional representa o banco de dados a partir de uma colecao de relacoes
+para suportar o processamento de transacoes online.
+	Sao otimizados para processar consultas que podem afetar uma pequena parte do banco de dados, 
+bem como transacoes que envolvam insercoe e alteracoes.
+
+
+Modelo Conceitual:
+	Finalidade do modelo conceitual de dados e capturar os requisitos de informacao
+e regras de negocio sob o ponto de vista do negocio.
+
+Para isto, torna-se necessario o entendimento e a correta aplicacao dos mecanismos de abstracao,
+utilizados na modelagem concuitual de dados.
+
+
+Modelo Logico de dados:
+	Um modelo logico de dados e uma representacao logica das informacoes da area de negocios,
+nao e um banco de daos, e independente de tecnologia e modelo fisico
+
+	Este e o conceito chave da modelagem de dados logica. ele deve ser independente da tecnologia devido 
+a constante mudancas dos produtos tecnologicos.
+
+Modelo Fisico:
+	A modelagem fisica lida com o design do banco de dados real, com base nos requisitos reunidos durante a modelagem 
+logica do banco de dados.
+
+	Todas as informacoes coletadas convertidas em modelos relacionais e modelos de negocios.
+
+
+Normalizacao:
+
+	A normalizacao e o metodo de organizar os dados no banco de dados de maneira eficiente.
+
+	Envolve a contrucao de tabelas e a criacao de relacionamentos entre essas tabelas de acordo com as regras especificas.
+	
+	A redundancia e a dependencia inconsistente podem ser removidas usando essas regras para tornala mais flexivel.
+
