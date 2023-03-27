@@ -1,0 +1,30 @@
+Governança
+	A governança é a organização sobre todos os processos de uim sistema social, seja através de leis, normas, poder ou linguagem.
+	A governança é a forma de como as regas, normas e ações são estruturadas, sustendadas, reguladas, e reposabilizadas.
+
+Governança de DAados:
+	A governança de dados então nada mais é do que o conjunto de regras, politicas, padores, leis e etc, que conversam sobre o melhor uso dos dados.
+
+Ter ou não ter uma área de governança?
+	Criar uma área de governança de dados deve ser uma decisão estratégica, visto que se trata muito mais de uma mudança cultural,
+do que uma implementação operacional.
+
+Modelos de Governança 
+	São inúmeras as possibilidade de modelos de governança de dados e por isso aqui iremos abordar de maneira mais ampla, algumas das opções em altonível:
+
+	Modelo mais centralizado;
+	Modelo distribuído/híbrido, poder distribuído entre o ecossistema;
+	Modelo descentralizado, o ecossistema tem mais poder e controle do que o própria área de governança.
+
+
+Por onde começar:
+	1P - Programa: Governança é um programa, isso significa que é um programa, entrega de valor contínua. - Cultura de Valor Contínuo.
+	2P - Pricípios e Propósito: Valores e missão do programa.
+	3P - Patrocínio: Necessidade de envolvimento executivo.
+	4P - Planejamento e Posicionamento: Organização e visão macro priorizando os patrocínios mais engajados e as "pequenas vitórias" mais relevantes;
+	5P - PRODUTO: Orientado ao cliente/Consumidor.
+	6P - PROTÓTIPO: Nível de maturidade de produto com construção rápida (dias ou poucas semanas), experimental e sem escala. Muitas vezes o MVP;
+	7P - PILOTO: Nível de maturidade de produto com costrução estruturada, mas não necessariamente integrada e escalável. Adequado à necessidade
+		priorizada (semanas ou poucos meses). 
+	8P - PROJETO: Nível de maturidade de produto com construção bem desenhada, itegrada e escalável. Mais demorada (vários meses), pois necessita de maior estruturação;
+
