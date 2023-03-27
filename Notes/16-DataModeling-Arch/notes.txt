@@ -107,3 +107,94 @@ Normalizacao:
 	
 	A redundancia e a dependencia inconsistente podem ser removidas usando essas regras para tornala mais flexivel.
 
+
+Modelagem de Dados Dimensional
+
+Modelagem de dados dimensional - Beneficios:
+	Um modelo dimensional e uma estrutura de banco de dados otimizada para consultas online(OLAP) e ferramentas de armazenamento de dados
+
+	E composto por tabelas de 'fatos' e 'dimensoes'
+
+	Sao estruturas desnormalizadas projetadas para recuperar dados de um data warehouse.
+
+Desnormalizacao: E o processo inverso de normalizacao, onde o esquema normalizado e convertido em um esquema que possui informacoes redundantes.
+	
+	O desempenho e aprimorado usando redundancia e mantendo os dados redundantes consistentes.
+
+	O motivo para a desnormalizacao e o overhead produzido no processador de consultas por uma estrutura supernormalizada.
+
+	A abordagem de desnormalizacao enfatiza o conceito de que, ao colocar todos os dados em unico local(exemplo: uma unica  tabela), e possivel  eliminar
+a necessidade de pesquisar esses varios arquibos para coletar esses dados.
+
+	A estrategia basica e seguida na desnormalizacao, onde o processo mais dominante e selecionado para examinar essas modificacoes
+que, em ultima analise, melhorarao o desempenho. 
+
+Beneficios:
+	- Recuperacao mais rapida
+		A modelagem dimensional mescla as tabelas no proprio modelo, o que permite aos usuarios recuperar dados mais rapidamente
+		executando consultas de juncao em comparacao com outras abordagens.
+
+	- Melhor compreensao dos processos de negocios
+		As informacoes em um modelo dimensional sao armazenadas em tabelas de fatos e dimensoes
+
+		Essa categorizacao de dados em fatos e dimensoes apresentam processos de negocios complexos de uma maneira facil 
+		de entender para os analistas.
+
+	- Flexibilidade para mudar	
+		A estrutura de modelagem dimensional torna o design do datawarehouse extensivel
+		O design pode ser facilmente modificado para incorporar uaisquer novos requisitos de negocios ou fazer quaisquer ajustes
+
+
+Fatos e dimensoes:
+	Sem pre composto por uma tabela fato ou tabelas fatos a depender do contexto, com algumas dimensoes, as dimensoes sao os contextos em que 
+os fatos foram acontecendo. 
+
+Tabela Fato:
+	É uma coleção de itens de dados, composta e medidas e de contexto.
+	Cda fato representa um item, uma transação ou um evento de negócio.
+	Reflete a evolução dos negócios do dia-a-dia de uma orghanização.
+
+
+Tabela Dimensão:
+	São elementos que participam de um fato.
+	São as possíveis formas de visualizar dados (por mês, por país, por produto, por região e etc) -> contexto de uma loja 
+	Representam o contexto de um assunto de negócio.
+
+Medidas:
+	São os atributos numéricos que representam um fato, a performance de um indicador de negócio relativo às dimensões que participam
+desse fato .
+	É determinada pela combinação das dimensões que participam de um fato e estão localizados como atributos de um fato. Por exemplo, o valor 
+em reais das vendas, quantidade de unidades vendidas e quantidade em estoque.
+
+		o quê
+	          |
+	onde <-> fato <-> quando
+		  | 
+		 quem
+
+Modelo Dimensional 
+	Tipos de Modelo Dimensional:
+		Star Schema (Modelo Estrela)
+		Snowflake Schema (Modelo Floco de Neve)
+
+
+Star Schema:
+	Modelo Mais difundido e utilizaod na criação de um Data Warehouse (DW).
+	Este foi um modelo proposto por Ralph Kimball com o objetivo de simplificar a visualização dimensional, facilitando a distinção entre as 
+dimensões e aos fatos.
+	Todas as tabelas estão amarradas a tabela fato em um formato de estrela, o fato de estarem amarradas a(s) tabela(s) fato(s) acaba por gerar
+muita redundância  de informações.
+
+
+Snowflake 
+	Se por um lado o Star Schema busca a simplicidade, o Snowflake Schema adiciona complexidade ao modelo, com o objetivo de reduzir a redundancia no armazenamento.
+	Essa complexidade não é apenas em nível d armazenamento, mas também na consulta e extração das informações, pois este modelo tende a aproximar novamente a modelagem 
+dimensional da modelagem utilizada nos sistemas transacionais e isto dificulta o entendimento por parte dos usuários de negócio.
+	Continua a ter ligações com as demais tabelas.
+
+Criação do Modelo Dimensional:
+	Definição dos processos de negócios;
+	Declaração/definição da granularidade;
+	Identificação dos Fatos;
+	Identificação das dimensões
+	
