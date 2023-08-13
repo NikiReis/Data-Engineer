@@ -1,0 +1,69 @@
+Assim como acontece com os pontos de entrada do prpgrama SparkContext, SQLContext e HiveContext que discuti
+antes, os aplicativos Spark Streaming tambem tem um ponto de entrada chamada StreamingContext
+
+Aplicacao Spark = Driver + grupo de Executors
+Driver Executa o processo principal e cria um SparkContext que serve para coordenar a execucao do seu job
+Os executors sao processos em execucao nos work nodes responsavel por executar tasks que o Driver atribuiu a ele.
+O Cluster Manager (Yarn, Mesas) e responsavel pela alocacao dos recursos da aplicacao Spark
+
+O Spark context e usado pelo processo do Spark Driver do seu aplicativo Spark para estabelecer uma Comunicacao com o cluster e o Cluster Manager (Yarn) para entao coordenar e executar jobs
+
+Spark Context tambem permite o acesso a outros dois contextos, ou seja, SQLContext e HiveContext
+
+Para criar um Spark Context, primeiro voce precisa criar uma configuracao, chamada SparkConf
+
+
+SQLContext e o ponto de partida de entrada para o SparkSQL, que e um modelo Spark para processamento de dados estruturados.
+
+Depois que o SQLContext e inicializado, o usuario pode usa-lo para realizar varias operacoes "semelhantes ao sql" em conjuntos de dados e dataframes
+
+Para criar um SQLContext, primeiro voce precisa instanciar um SparkContext
+
+Se o seu aplicativo Spark precisa se comunicar com o Hive e voce esta usando o Spark <2.0 provavelmente precisara de um HiveContext.
+
+
+# Ao abrir o Spark podemos definir quantos recurso computacionais (cores) queremos para aquela secao
+Local
+local[n]
+local[n,m]
+
+# Modo nao interativo
+from pyspark import SparkContext
+sx = SparkContext ("local")
+
+# Stream Context
+
+O StreamingContext representa uma conexao a uma plataforma ou cluster Spark usando um SparkContext existente
+O StreamingContext e usado para criar os datasources de DStreams controlar a computacao de streaming e as transformacoes de DStreaming
+O StreamingContext tambem especifica o argumento batchDuration, que e um intervalo de tempo em segundos pelo qual os dados de streaming serao divididos em lotes.
+Depois de instanciar um StreamingContext, voce criara uma conexao com o fluxo de dados e definiria uma serie de transformacoes a serem realizadas.
+O metodo start() ou ssc.start() e usado para acionar os dados de entrada e depois que um StreamingContext() e estabelecido.
+O StreamingContext pode ser interrompido programaticamente usando o ssc.stop() ou ssc.awaitTermination()
+
+# StreamContext
+
+Discretized streams (DStreams) sao objeto de programacao basico de API Spark Streaming
+Streams representam uma sequencia continua de RDDs que sao criados a partir de um fluxo continuo de dados
+DStreams podem ser criados a partir de fontes de dados de straming, como soquetes TCP, sistemas de mensagens, APIs de streaming (como a API de Streaming do Twitter) e muito mais.
+DStreams (como uma abstracao RDD) tambem pode ser reproduzido a partir de transformacoes realizadas na DStreams existente (tais como map, flatMap e outras operacoes).
+
+DStreams oferece suporte a dois tipos de operacoes: 
+    Imagem transformacoes 
+    Imagem Operacoes de saida
+
+DStreams sao Lazy Evaluation assim como Spark RDD
+
+DStreams Source sao definidos em um StreamingContext para um fluxo de dados de entrada especificado, da mesma forma que os RDDs sao criados para uma fonte de dados de entrada em um SparkContext
+
+Muitas fontes de entrada de streaming comuns estao incluidas na API de streaming, como fontes para ler dados de um soquete TCP ou para ler dados enquanto esles estao sendo gravados no HDFS
+
+As fontes basicas de dados de entrada para a criacao de DStreams sao descritas aqui: 
+    socketTextStream()
+
+StreamingContext.socketTextStream(hostname, port, storageLevel = StorageLevel (True, True, False, False,2))
+
+O metodo socketTextStream e usado para criar um DStream a partir de uma fonte TCP de entrada definida pelos argumentos hostname e port.
+
+Os dados recebidos sao interpretados usando o encoding UTF8, com terminacao de nova linha usada para definir novos registros.
+
+O storageLevelargumento que define storage level padrao MEMORY_AND_DISK_SER_2

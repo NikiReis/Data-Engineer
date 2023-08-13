@@ -1,0 +1,63 @@
+# Camadas
+
+Raw Zone
+    Todo dados recebido pelos sistemas orignes classificamos como Raw Zone. Realizamos ingestoes nesta camada com 
+    todos os tipos.STRING. O tipo STRING e o tipo mais generico de todos. Aos realizarmos ingestoes com o tipo String,
+    garantimos que o dado AS-IS e armazenado. Caso arquivos provenientes do sistema origem cheguem com algum tipo de anomalidade tal como 
+    caracteres especiais, formatos invalidos entre outros, o tipo STRING e flexivel o suficiente para armazenar o dado como ele vem de origem.
+
+Trusted Zone
+    Na camada Trusted realizamos ingestoes mais direcionadas as regras de negocios. Apos o cruzamento de tabelas do tipo Raw, realizamos transformacoes de CAST, por exemplo, realizamos
+    JOIN'S e aplicamos regras de negocios. A ingestao final deve contrmplas as data-types corretos, ou seja, um campo valorado decimal em raw e STRING porem
+    aqui ele e decimal.
+
+Refined Zone  Na ultima camada, criamos as visoes para relatorios. Criamos tabelas do tipo Refined selecionando 
+apenas campos especificos paras as visoes de relatorio. Entao se o resultado de uma tabela agregada e tipada, Trusted possuir varias informacoes sobre um determinado tema e precisarmos mostrar no relatorio um agrupamento
+menor de campos, criamos Refined a partir de Trusted. Caso todos os campos precisem ser mostrados no Dashboard, entendemos que a 
+Trusted e a Refined
+
+Quandos voce esta trabalhando em um ambiente BigData, existem varios formatos de dados,. Os dados podem ser transformados em um formato legivel
+como arquivo JSON ou CSV, mas isso nao significa que essa e a melhor maneira de realmente armazenar dados.
+Existem tres formatos de arquivos otimizados para uso em clusters Hadoop:
+    Optimized Row Column (ORC)
+    Avro 
+    Parquet
+
+- Parquet: 
+
+    Orientado por coluna (armazenar dados em colunas): os armazenamentos de daods orientados por coluna selecionando
+    otimizados para cargas de trabalho analiticas pesadas em leitura 
+
+    Altas taxas de compressao (Ate 75% com compressao Snappy)
+
+    Apenas as colunas necessarias seriam buscadas / lidas (reduzindo a E/S do disco)
+
+    Pode ser lido e escrito usando Avro API e Avro Schema
+
+- Avro:
+
+    Com base em linha (armazena dados em linhas): bancos de dados baseados em linha sao melhores para cargas de trabalho transacionais pesadas de gravacao
+
+    Serializacao de suporte
+
+    Formato binario rapido
+
+    Suporta compressao de bloco e divisivel
+
+    Evolucao do esquema de suporte (o sudo de JSON para descrever os dados, enquanto usa o formato binario para otimizar o tamanho do armazenamento)
+
+    Armazena o esquema no cabecalho do arquivo para que os dados seja autodescritivos
+
+- ORC:
+
+    Orientado a coluna (armazena dados em colunas): armazenamentos de dados orientados por colunas sao otimizados para cargas de trabalhos analiticas pesadas em leitura
+
+    Altas taxas de compressao (ZLIB)
+
+    Suporte ao tipo Hive (datetime, decimal e os tipos complexos como struct, list, map e union)
+
+    Metadados armazenados usando buffers de protocolo, que permitem adicao e remocao de campos
+
+    Compativel com o HiveQL
+
+    Suporte a serializacao
